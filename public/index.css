@@ -1,0 +1,162 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+  html{
+    font-family: 'helvetica neue', arial, helvetica, sans-serif;
+  }
+    @media (min-width: 1024px){
+      html{
+        font-size: 1.45vw;
+      }
+    }
+  body{
+    transition: background-color 4s ease-out, color 4s ease-in;    
+  }
+    .serif{
+      font-family: times, serif;
+    }
+    .italic{
+      font-style: italic;
+    }
+    a,
+    .red{
+      color: #FF0000;
+    }
+  body.streaming{
+    background: #000000;
+    color: #FFFFFF;
+  }
+    body.streaming .txt .fig--footnote{
+      background: #000000;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }    
+
+  body.not-streaming{
+    background: #FFFFFF;
+    color: #000000;
+  }
+    body.not-streaming .txt .fig--footnote{
+      background: #FFFFFF;
+      color: #000000;
+      border-color: #000000;
+    }    
+
+  header{
+    box-sizing: border-box;
+    padding: 2rem 2rem 0 2rem;  
+    text-align: center;
+  }
+    header h1{
+      font-family: times, serif;
+      color: #ff0000;
+      font-style: italic;
+    }
+    header h1,
+    header h2{
+      font-weight: normal;
+      font-size: 1rem;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    header hgroup{
+      margin-bottom: 0;
+    }
+
+    .txt{
+      padding-top: 1rem;
+    }
+
+    .txt .fig--visual{
+      margin: 2rem 0;
+    }
+      .fig--visual__inset{
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      .txt .fig--visual .tweet{
+        font-size: 0.8rem;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .txt .fig--visual .tweet .twitter-tweet{
+        transform: scale(0.82);
+      }
+    .txt .fig--visual img,
+    .txt .fig--visual video{
+      display: block;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .txt .fig--visual video{
+      max-width: 80%;
+    }
+      .txt .fig--visual img+img{
+        margin-top: 1rem;
+      }
+
+    .txt section,
+    .txt footer{      
+      box-sizing: border-box;
+      padding: 0 2rem;
+      margin: 0 auto;
+      position: relative;
+    }
+    .txt footer{    
+      padding-bottom: 10rem;
+      padding-bottom: 10vh;
+    }
+    .txt .fig--footnote{          
+      font-size: 0.8em;      
+      padding: 1rem 2rem;
+      margin: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      transform: translateY(100%);
+      transition: .3s ease-out;
+      z-index: 50;
+      border-top: 1px solid;
+    }
+      .txt .fig--footnote p{
+        margin-top: 0;
+      }
+    .txt .fig--footnote.visible{
+      transform: translateY(0);
+    }
+      @media (min-width: 720px){
+        .txt section,
+        .txt footer{
+          width: 47%;
+        }
+        .txt .fig--footnote{          
+          padding: 0;
+          text-align: right;
+          width: 15vw;  
+          position: absolute;
+          right: 100%;
+          left: auto;
+          transform: none;
+          border: none;
+          bottom: auto;
+        }
+      }
+
+    .txt a[href^="#ftnt"]{
+      font-size: .6em;
+      color: #000000;
+      text-decoration: none;
+      vertical-align: super;
+    }
+    .txt q,
+    .txt .fig--footnote,
+    .txt a{
+      font-family: times, serif;
+    }
+    .txt q{
+      font-style: italic;
+    }

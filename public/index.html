@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="ECHO FX streaming live on 23 and 30 June 2021"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -24,20 +24,179 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <link rel="stylesheet" href="index.css">
+    <title>ECHO FX</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <header>
+      <hgroup>
+        <h1>ECHO FX</h1>
+        <h2>Demystification Committee</h2>
+      </hgroup>
+    </header>
+    <noscript>Please enable JavaScript to view the stream.</noscript>
+    <div id="root">
+      
+    </div>
+    <article class="txt">
+      <section class="txt--timings">
+        <p class="serif italic">
+          230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes defeat.
+        </p>
+        <p class="serif italic">
+          230616 2252: in a Foreign Exchange market driven by a strong Remain sentiment, the network effect of Farage's concession pushes the Pound to a six month high.
+        </p>
+        <p class="serif italic">
+          240616 0528: the Pound reaches its lowest point in 30 years, losing 12% of its value against the Dollar.
+        </p>
+      </section>
+      <section class="txt--intro">
+        <p>
+          ECHO FX is a 20 minute audiovisual performance by the Demystification Committee, replaying the events unfolding on June 23, 2016, the night of Brexit referendum.
+        </p>
+        <p>
+          As polls closed that night, Nigel Farage conceded a defeat he knew unlikely: <q>Remain will edge it...</q>
+        </p>
+        <p>
+          The echo of his concession shaped Foreign Exchange markets’ sentiment, immediately contributing to inflate the value of the Pound. Those markets did not foresee the outcome of the referendum and even priced in on a possible Remain win, with the Pound reaching a six month high before any official result announcement, fuelled by Farage’s concession.
+        </p>
+        <p>
+          As the referendum outcome became apparent later that night, the Foreign Exchange Pound market crashed in disbelief. Yet, a few traders with access to private polls could foresee the outcome and made millions by shorting the Pound.
+        </p>
+      </section>
+      <figure class="fig--visual fig--visual__large">
+        <img src="%PUBLIC_URL%/media/image1.jpg" alt="">
+      </figure>
+      <section class="txt--performance">
+        <p>
+          ECHO FX replays the night’s events using Twitter and FX market data to generate sound and images, alongside footage of traders who shorted the Pound. 
+        </p>
+        <p>
+          The piece was originally screened on the third anniversary week of the referendum night as part of Hyperdub's party series <a href="#">Ø</a> (Corsica Studios, London, June 2019) and performed 48 hours before the United Kingdom left the European Union as part of <a href="#">CTM x transmediale festival</a> (Berghain, Berlin, January 2020).
+        </p>
+        <p>
+          The week of 23-30 June, 2021 marks the fifth anniversary since referendum night and is the last week of the grace period, after which a person’s presence in the UK is no longer tolerated, unless they are UK citizen or have settled status.
+        </p>
+        <p>
+          As the consequences of Brexit become tangible, details of the events replayed in ECHO FX remain unclear, such as the legality of polling companies’ sale of private polls, or whether Farage, a former trader, had any personal dealings in this venture.
+        </p>
+        <p>
+          To mark this symbolic anniversary, ECHO FX will be streamed on <a href="">stream.demystification.co</a> on the evenings of June 23, 2021 - the fifth anniversary of the referendum, and June 30, 2021 - the last day of the grace period.
+        </p>
+        <figure class="fig--visual">
+          <video src="%PUBLIC_URL%/media/farage.mp4" poster="%PUBLIC_URL%/media/farage.jpg" width="480" height="560" controls ></video>
+        </figure>
+      </section>      
+      <section class="txt--analysis">
+        <p>
+          ECHO FX focuses on referendum night as it offered a rare set of conditions whereby a usually complex financial market (GPUSD, or the Pound market in US Dollars) exposed itself in a simplified state. The Pound market responded to a clearly defined stimulus: a 9-hour stream of 382 local voting results, announcing one by one whether to Leave or Remain in the EU, as decided by a majority.
+        </p>
+        <p>
+          Given the information contained in the vote, the outcome could have been predicted hours before the Pound market adjusted to it: 20-30 local voting results would suffice for a simple algorithm to predict the outcome<a href="#ftnt1">1</a>. Such information would have been available in less than two hours from the first local result announcement. 
+        </p>
+        <figure class="fig--footnote" id="ftnt1">
+          <span class="footnote--num">1</span>
+          <p>
+            Wu, K., Wheatley, S. and Sornette, D, <a href="">Inefficiency and predictability in the Brexit Pound market: a natural experiment</a>, The European Journal of Finance, (2020)
+          </p>          
+          <p>
+            Although written with the benefit of hindsight, the algorithm developed therein demonstrates the inefficiency of the Pound market by comparing the probability of a Leave win it estimates based on the stream of voting results with the probability implied by the Pound market on referendum night
+          </p>          
+        </figure>
+        <p>
+          However, the Pound market took much longer to adjust to the outcome. Its inefficiency was behavioural, a matter of confirmation bias - traders did not want to believe that the UK was voting to leave the EU.
+        </p>
+        <figure class="fig--visual fig--visual__inset">
+          <img src="%PUBLIC_URL%/media/graph1.png" alt="">
+        </figure>
+        <p>
+          While the largest betting market (Betfair) <a href="#ftnt2">2</a> inverted their odds in favour of Brexit two hours after the first result announcement, reflecting the information contained in the vote, the Pound market continued to be driven by a Remain sentiment. Only when the referendum outcome became inevitable, over three hours after the first result announcement, the market finally crashed.
+        </p>
+        <figure class="fig--footnote" id="ftnt2">
+          <span class="footnote--num">2</span>
+          <p>
+            The figure above shows the Betfair and Pound markets for the period of the announcement of results.
+          </p>          
+          <p>
+            For a comprehensive analysis see Auld, T. and Linton, O., <a href="">The Behaviour of Betting and Currency Markets on the Night of the EU Referendum</a>, (2017)
+          </p>          
+        </figure>
+        <p>
+          ECHO FX looks primarily at the role of a well-timed piece of disinformation which echoed through Twitter on Referndum night, acting as a counterpoint to what, with hindsight, was a predictable result. Early that night, as the polls close, Farage’s conceding statement spread with memetic speed on Twitter, reduced to its most transmissible form and echoed almost 5000 times:
+        </p>
+        <figure class="fig--visual">
+          <div class="tweet">
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">BREAK: <a href="https://twitter.com/Nigel_Farage?ref_src=twsrc%5Etfw">@Nigel_Farage</a> tells me: it&#39;s been an extraordinary referendum, exceptionally high turn and looks REMAIN will edge it. <a href="https://twitter.com/hashtag/EUref?src=hash&amp;ref_src=twsrc%5Etfw">#EUref</a></p>&mdash; Darren McCaffrey (@DarrenGBNews) <a href="https://twitter.com/DarrenGBNews/status/746085435915501568?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+          <div class="tweet">
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Farage saying that <a href="https://twitter.com/hashtag/remain?src=hash&amp;ref_src=twsrc%5Etfw">#remain</a> will edge it. Haha brilliant.</p>&mdash; A.Monolith (@alanmonolith) <a href="https://twitter.com/alanmonolith/status/746085958567727106?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+          </div>
+        </figure>
+        <p>
+          With the stream of local results most clearly aggregated and announced by the BBC’s Twitter feed on the night, Twitter was the primary source for information and it wasn’t until the results start to trickle in that Farage’s echoes subsided. <a href="#ftnt3">3</a>
+        </p>
+        <figure class="fig--footnote" id="ftnt3">
+          <span class="footnote--num">3</span>
+          <p>
+            The figure underneath shows five affect components within the contents of Twitter at UK level and the GBPEUR for 48 hours, starting from June 23, 2016.
+          </p>
+          <p>
+            See Lansdall-Welfare, T., Dzogang, F. and Cristianini, N., <a href="">Change-point Analysis of the Public Mood in UK Twitter during the Brexit Referendum</a> (2016)
+          </p>
+        </figure>
+        <figure class="fig--visual fig--visual__inset">
+          <img src="%PUBLIC_URL%/media/graph2.jpg" alt="">
+        </figure>
+        <p>
+          On the days leading to the referendum some polling companies had undertaken private in-depth polls that showed a likely Leave win. As news outlets were sold polls pointing to a Remain win, confirming the Pound market’s bias even before Farage’s concession, some London City traders were sold the in-depth private polls.
+        </p>
+        <p>
+          Perhaps a case of <a href="">illegal sale</a>, that information was rendered as capital as traders bet against the falling value of the Pound before the market adjusted to the referendum outcome, effectively shorting the Pound to make huge profits.
+        </p>
+      </section>
+      <figure class="fig--visual fig--visual__large">
+        <img src="%PUBLIC_URL%/media/image2.jpg" alt="">
+      </figure>
+      <section class="txt-release">
+        <p>        
+          In fall 2021, ECHO FX will be released by <a href="">Krisis Publishing</a> as a limited edition booklet accompanied by HQ digital download. The booklet includes contributions by the Demystification Committee, Obsolete Capitalism, Krisis Publishing and others.
+        </p>
+      </section>
+      <footer>
+        <p>
+          Demystification Committee, June 2021
+        </p>
+      </footer>
+    </article>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script>
+      var footnoteBreakpoint = 720;
+      var $footnoteLinks = document.querySelectorAll('a[href^="#ftnt"]');
+      var $footnotes = document.querySelectorAll('.fig--footnote');
+      $footnoteLinks.forEach( function($link){
+        $link.addEventListener('click', function(){
+          var $footnote = document.querySelector($link.getAttribute('href'));
+          $footnote.classList.toggle('visible');
+          $footnotes.forEach(function( $otherFootnote ){
+            if( $footnote.id !== $otherFootnote.id ){
+              $otherFootnote.classList.remove('visible');
+            }
+          })
+        });
+      });
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      window.addEventListener('scroll', function(){
+        $footnotes.forEach(function( $footnote ){
+          $footnote.classList.remove('visible');
+        });
+      })
+
+      $footnotes.forEach(function($footnote){
+        $footnote.addEventListener('click', function(){
+          $footnote.classList.remove('visible');
+        });
+      });
+
+    </script>
   </body>
 </html>
