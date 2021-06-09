@@ -64,19 +64,36 @@ function App() {
   }, [isStreaming] );
 
   useEffect( () => {
-    getTime().then( (t) => {      
+    let last = 0;
+    let timeUpdate;
+    getTime().then( (t) => { 
+      var jst = (new Date()).getTime();
+      console.log('SRV TIME: ', t, 'JS TIME: ', jst, 'DIFF: ', jst - t );     
       setNow(t);
-    });
-    const timeUpdate = setInterval( () => {
-      getTime().then( (t) => {
-        setNow(t);
-      });
-    }, 1000 );
-
-    return () => {
-      clearInterval( timeUpdate );
+      last = t;
+    });  
+    
+    const run = ( inTime ) => {
+      clearTimeout( timeUpdate );
+      timeUpdate = setTimeout( () => {
+        let getStart = (new Date()).getTime();
+        getTime().then( (t) => {
+          var jst = (new Date()).getTime();
+          console.log('SRV TIME: ', t, 'JS TIME: ', jst, 'DIFF: ', jst - t );     
+          setNow(t);
+          let getComplete = (new Date()).getTime();
+          run( 1000 - (getComplete - getStart ) );
+          last = t;
+          console.log('RUN IN: ', (getComplete - getStart ) );
+        });
+      }, inTime );
     }
-  });
+
+    run( 1000 );
+    return () => {
+      clearTimeout( timeUpdate );
+    }
+  }, []);
 
   const wrapperClasses = `wrapper ${(isStreaming) ? 'streaming' : 'not-streaming' }`
 
