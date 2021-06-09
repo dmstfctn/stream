@@ -66,7 +66,6 @@ function App() {
   useEffect( () => {
     let timeUpdate;
     getTime().then( (t) => { 
-      var jst = (new Date()).getTime();
       setNow(t);
     });  
     
