@@ -64,13 +64,10 @@ function App() {
   }, [isStreaming] );
 
   useEffect( () => {
-    let last = 0;
     let timeUpdate;
     getTime().then( (t) => { 
       var jst = (new Date()).getTime();
-      console.log('SRV TIME: ', t, 'JS TIME: ', jst, 'DIFF: ', jst - t );     
       setNow(t);
-      last = t;
     });  
     
     const run = ( inTime ) => {
@@ -78,13 +75,9 @@ function App() {
       timeUpdate = setTimeout( () => {
         let getStart = (new Date()).getTime();
         getTime().then( (t) => {
-          var jst = (new Date()).getTime();
-          console.log('SRV TIME: ', t, 'JS TIME: ', jst, 'DIFF: ', jst - t );     
-          setNow(t);
           let getComplete = (new Date()).getTime();
+          setNow(t);          
           run( 1000 - (getComplete - getStart ) );
-          last = t;
-          console.log('RUN IN: ', (getComplete - getStart ) );
         });
       }, inTime );
     }
