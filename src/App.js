@@ -98,6 +98,7 @@ function App() {
                 <time dateTime={(new Date(stream.start)).toISOString()}>
                   {stream.title}
                 </time> 
+                <wbr></wbr>
                 {(remaining) ? <span className="remaining serif italic red"> 
                   ({ remaining })
                 </span> : ''}

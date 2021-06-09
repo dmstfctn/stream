@@ -13,7 +13,7 @@
 
   nav{
     text-align: center;
-    padding: 2rem;  
+    padding: 2rem 1rem;  
     box-sizing: border-box;
   }
   nav ol{
@@ -21,9 +21,10 @@
     margin-bottom: 0;
     margin-top: 0;
     padding: 0;
-  }
+  }    
     .remaining{
       margin-left: .5em;
+      white-space: nowrap;
     }
 
 
