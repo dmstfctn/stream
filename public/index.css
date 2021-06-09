@@ -104,16 +104,20 @@ html, body {
       margin-left: auto;  
       margin-right: auto;
     }
-    .txt .fig--visual .video-container .mute-unmute{
-      font-family: times, serif;
-      color: #FF0000;
-      text-decoration: underline;
-      background: none;
-      border: none;
-      font-size: inherit;
-      padding: 0;
-      margin: .5rem 0 0 0;
-      cursor: pointer;
+      .txt .fig--visual .video-container .mute-unmute{
+        font-family: times, serif;
+        color: #FF0000;
+        text-decoration: underline;
+        background: none;
+        border: none;
+        font-size: inherit;
+        padding: 0;
+        margin: .5rem 0 0 0;
+        cursor: pointer;
+      }
+
+    .txt .fig--visual__large img{
+      width: 100%;
     }
 
     .txt section,
