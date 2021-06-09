@@ -122,7 +122,7 @@ const Stream = function({
     if( isLeadIn || isPlaying ){
       setIsPlaying( true );
     }
-  }, [isLeadIn, isStreaming] );
+  }, [isLeadIn, isStreaming, isPlaying] );
 
   if( isLeadIn || isStreaming ){
     return (
@@ -169,6 +169,7 @@ const Stream = function({
     >
       <div className="stream--media">
         <img 
+          alt="Screenshot from ECHO FX containing a twitter avatar of a face in red and black with text that reads @klobo15 Farage told Sky that REMAIN will edge it"
           className="stream--placeholder"
           src={placeholderSrc} 
         />

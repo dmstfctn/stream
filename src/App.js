@@ -52,7 +52,7 @@ function App() {
   useEffect( () => {
     checkShouldStream();
     setStreams( sortStreams( Data.streams, now ) );
-  }, [now] );
+  }, [now, checkShouldStream] );
   
   useEffect( () => {
     if( isStreaming ){
