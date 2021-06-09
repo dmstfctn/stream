@@ -199,7 +199,7 @@
           var $footnoteInner = $footnote.querySelector('.footnote--inner');         
           var linkBox = $link.getBoundingClientRect();
           var noteBox = $footnote.getBoundingClientRect();
-          var difference = noteBox.y - linkBox.y;
+          var difference = noteBox.top - linkBox.top;
           $footnoteInner.style.transform = 'translateY(' + (-1 * difference) + 'px)';
         });
       }
@@ -256,7 +256,7 @@
           var $video = $videoContainer.querySelector('video');
           var vidBox = $video.getBoundingClientRect();          
 
-          if( vidBox.y < window.innerHeight && vidBox.y > vidBox.height * -1 ){
+          if( vidBox.top < window.innerHeight && vidBox.top > vidBox.height * -1 ){
             $video.play();
           } else {
             $video.pause();
