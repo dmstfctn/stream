@@ -105,13 +105,15 @@
           Given the information contained in the vote, the outcome could have been predicted hours before the Pound market adjusted to it: 20-30 local voting results would suffice for a simple algorithm to predict the outcome<a href="#ftnt1">1</a>. Such information would have been available in less than two hours from the first local result announcement. 
         </p>
         <figure class="fig--footnote" id="ftnt1">
-          <span class="footnote--num">1</span>
-          <p>
-            Wu, K., Wheatley, S. and Sornette, D, <a href="">Inefficiency and predictability in the Brexit Pound market: a natural experiment</a>, The European Journal of Finance, (2020)
-          </p>          
-          <p>
-            Although written with the benefit of hindsight, the algorithm developed therein demonstrates the inefficiency of the Pound market by comparing the probability of a Leave win it estimates based on the stream of voting results with the probability implied by the Pound market on referendum night
-          </p>          
+          <div class="footnote--inner">
+            <span class="footnote--num">1</span>
+            <p>
+              Wu, K., Wheatley, S. and Sornette, D, <a href="">Inefficiency and predictability in the Brexit Pound market: a natural experiment</a>, The European Journal of Finance, (2020)
+            </p>          
+            <p>
+              Although written with the benefit of hindsight, the algorithm developed therein demonstrates the inefficiency of the Pound market by comparing the probability of a Leave win it estimates based on the stream of voting results with the probability implied by the Pound market on referendum night
+            </p>
+          </div>      
         </figure>
         <p>
           However, the Pound market took much longer to adjust to the outcome. Its inefficiency was behavioural, a matter of confirmation bias - traders did not want to believe that the UK was voting to leave the EU.
@@ -123,13 +125,15 @@
           While the largest betting market (Betfair) <a href="#ftnt2">2</a> inverted their odds in favour of Brexit two hours after the first result announcement, reflecting the information contained in the vote, the Pound market continued to be driven by a Remain sentiment. Only when the referendum outcome became inevitable, over three hours after the first result announcement, the market finally crashed.
         </p>
         <figure class="fig--footnote" id="ftnt2">
-          <span class="footnote--num">2</span>
-          <p>
-            The figure above shows the Betfair and Pound markets for the period of the announcement of results.
-          </p>          
-          <p>
-            For a comprehensive analysis see Auld, T. and Linton, O., <a href="">The Behaviour of Betting and Currency Markets on the Night of the EU Referendum</a>, (2017)
-          </p>          
+          <div class="footnote--inner">
+            <span class="footnote--num">2</span>
+            <p>
+              The figure above shows the Betfair and Pound markets for the period of the announcement of results.
+            </p>          
+            <p>
+              For a comprehensive analysis see Auld, T. and Linton, O., <a href="">The Behaviour of Betting and Currency Markets on the Night of the EU Referendum</a>, (2017)
+            </p>
+          </div>       
         </figure>
         <p>
           ECHO FX looks primarily at the role of a well-timed piece of disinformation which echoed through Twitter on Referndum night, acting as a counterpoint to what, with hindsight, was a predictable result. Early that night, as the polls close, Farage’s conceding statement spread with memetic speed on Twitter, reduced to its most transmissible form and echoed almost 5000 times:
@@ -146,13 +150,15 @@
           With the stream of local results most clearly aggregated and announced by the BBC’s Twitter feed on the night, Twitter was the primary source for information and it wasn’t until the results start to trickle in that Farage’s echoes subsided. <a href="#ftnt3">3</a>
         </p>
         <figure class="fig--footnote" id="ftnt3">
-          <span class="footnote--num">3</span>
-          <p>
-            The figure underneath shows five affect components within the contents of Twitter at UK level and the GBPEUR for 48 hours, starting from June 23, 2016.
-          </p>
-          <p>
-            See Lansdall-Welfare, T., Dzogang, F. and Cristianini, N., <a href="">Change-point Analysis of the Public Mood in UK Twitter during the Brexit Referendum</a> (2016)
-          </p>
+          <div class="footnote--inner">
+            <span class="footnote--num">3</span>
+            <p>
+              The figure underneath shows five affect components within the contents of Twitter at UK level and the GBPEUR for 48 hours, starting from June 23, 2016.
+            </p>
+            <p>
+              See Lansdall-Welfare, T., Dzogang, F. and Cristianini, N., <a href="">Change-point Analysis of the Public Mood in UK Twitter during the Brexit Referendum</a> (2016)
+            </p>
+          </div>
         </figure>
         <figure class="fig--visual fig--visual__inset">
           <img src="%PUBLIC_URL%/media/graph2.jpg" alt="">
@@ -180,10 +186,43 @@
     </article>
 
     <script>
-      /* Small screen footnote functionality */
-      var footnoteBreakpoint = 720;
+      /* footnote functionality */      
       var $footnoteLinks = document.querySelectorAll('a[href^="#ftnt"]');
       var $footnotes = document.querySelectorAll('.fig--footnote');
+      var footnoteBreakpoint = 720;
+
+      /* align notes w/ numbers */
+      var alignFootnotes = function(){
+        clearAlignFootnotes();
+        $footnoteLinks.forEach( function($link){
+          var $footnote = document.querySelector($link.getAttribute('href')); 
+          var $footnoteInner = $footnote.querySelector('.footnote--inner');         
+          var linkBox = $link.getBoundingClientRect();
+          var noteBox = $footnote.getBoundingClientRect();
+          var difference = noteBox.y - linkBox.y;
+          $footnoteInner.style.transform = 'translateY(' + (-1 * difference) + 'px)';
+        });
+      }
+      var clearAlignFootnotes = function(){
+        $footnoteLinks.forEach( function($link){
+          var $footnote = document.querySelector($link.getAttribute('href'));
+          var $footnoteInner = $footnote.querySelector('.footnote--inner');
+          $footnoteInner.style.transform = '';
+        });
+      }
+
+      alignFootnotes();
+      window.addEventListener('resize', function(){
+        if( window.innerWidth > footnoteBreakpoint ){
+          alignFootnotes();
+        } else {
+          clearAlignFootnotes();
+        }
+      });
+
+
+      /* hide / show on small screen */
+     
       $footnoteLinks.forEach( function($link){
         $link.addEventListener('click', function(){
           var $footnote = document.querySelector($link.getAttribute('href'));
