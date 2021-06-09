@@ -84,7 +84,17 @@
           To mark this symbolic anniversary, ECHO FX will be streamed on <a href="">stream.demystification.co</a> on the evenings of June 23, 2021 - the fifth anniversary of the referendum, and June 30, 2021 - the last day of the grace period.
         </p>
         <figure class="fig--visual">
-          <video src="%PUBLIC_URL%/media/farage.mp4" poster="%PUBLIC_URL%/media/farage.jpg" width="480" height="560" controls ></video>
+          <div class="video-container">
+            <video 
+              src="%PUBLIC_URL%/media/farage.mp4" 
+              poster="%PUBLIC_URL%/media/farage.jpg" 
+              width="480" 
+              height="560" 
+              loop
+              muted
+            ></video>
+            <button class="mute-unmute">can't hear you</button>
+          </div>
         </figure>
       </section>      
       <section class="txt--analysis">
@@ -170,6 +180,7 @@
     </article>
 
     <script>
+      /* Small screen footnote functionality */
       var footnoteBreakpoint = 720;
       var $footnoteLinks = document.querySelectorAll('a[href^="#ftnt"]');
       var $footnotes = document.querySelectorAll('.fig--footnote');
@@ -197,6 +208,43 @@
         });
       });
 
+      /* content videos */
+      var $contentVids = document.querySelectorAll('.fig--visual .video-container');
+      
+      /* Autoplay content video on scroll to */
+      window.addEventListener('scroll', function(){
+        $contentVids.forEach(function($videoContainer){
+          var $video = $videoContainer.querySelector('video');
+          var vidBox = $video.getBoundingClientRect();          
+
+          if( vidBox.y < window.innerHeight && vidBox.y > vidBox.height * -1 ){
+            $video.play();
+          } else {
+            $video.pause();
+          }
+        });
+      });
+
+      /* set up custom controls */
+      $contentVids.forEach(function($videoContainer){
+        var $video = $videoContainer.querySelector('video');
+        var $muteUnmute = $videoContainer.querySelector('.mute-unmute');
+        $video.addEventListener('click', function(){
+          if( $video.paused ){
+            $video.play();
+          } else {
+            $video.pause();
+          }
+        });
+        $muteUnmute.addEventListener('click', function(){
+          $video.muted = !$video.muted;    
+          if( $video.muted ){
+            $muteUnmute.innerHTML = "can't hear you";
+          } else {
+            $muteUnmute.innerHTML = "be quiet";
+          }
+        });
+      });
     </script>
   </body>
 </html>
