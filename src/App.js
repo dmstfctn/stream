@@ -26,7 +26,7 @@ function App() {
 
  
 
-  const checkShouldStream = () => {
+  useEffect(() => {
     streams.forEach(({start, leadInStart}, i ) =>{ 
       if(
         now >= leadInStart
@@ -47,12 +47,11 @@ function App() {
         setIsStreaming( true );
       }     
     })
-  }  
+  }, [now, streams]); 
 
   useEffect( () => {
-    checkShouldStream();
     setStreams( sortStreams( Data.streams, now ) );
-  }, [now, checkShouldStream] );
+  }, [now] );
   
   useEffect( () => {
     if( isStreaming ){
