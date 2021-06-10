@@ -13,8 +13,9 @@ ReactDOM.render(
   function(){
     clearTimeout( loadingDoneTimeout );
     loadingDoneTimeout = setTimeout(function(){
-      document.getElementById('stream-root').classList.remove('loading')
-    }, 500 );    
+      document.getElementById('stream-placeholder').classList.add('hide');
+      document.getElementById('stream-root').classList.remove('loading')      
+    }, 100 );    
   }
 );
 
