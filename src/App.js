@@ -106,9 +106,9 @@ function App() {
                   {stream.title}
                 </time> 
                 <wbr></wbr>
-                {(remaining) ? <span className="remaining serif italic red"> 
-                  ({ remaining })
-                </span> : ''}
+                <span className="remaining serif italic red"> 
+                  ({ (remaining) ? remaining : 'now' })
+                </span>
               </li>
             )
           })}
