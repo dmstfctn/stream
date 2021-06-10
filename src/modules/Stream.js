@@ -19,6 +19,8 @@ const Stream = function({
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(isStreaming);  
   const [isFullscreen, setIsFullscreen] = useState( false );  
+  const [fullscreenShowControls, setFullscreenShowControls] = useState(true);
+  const fullscreenHideControlsTimeout = useRef();
   const player = useRef();
   const streamWrapper = useRef();
 
@@ -28,15 +30,12 @@ const Stream = function({
 
   const fullscreen = () => {
     if( screenfull.isFullscreen ){
-      screenfull.exit();
-      setIsFullscreen( false );
+      screenfull.exit();               
     } else {
       screenfull.request(
         findDOMNode(streamWrapper.current),
         {navigationUI: 'hide'}
-      ).then( () => {        
-        setIsFullscreen(true)
-      });      
+      )    
     }
   }
 
@@ -66,6 +65,48 @@ const Stream = function({
     });
   }
 
+  const mouseMove = () => {
+    setFullscreenShowControls( true );
+  }
+
+  useEffect( () => {
+    const handleFullscreenChange = () => {
+      if( screenfull.isFullscreen ){
+        setIsFullscreen(true)
+      } else {
+        setIsFullscreen(false)
+      }
+    }
+    screenfull.on('change', handleFullscreenChange );
+    return () => {
+      screenfull.off('change', handleFullscreenChange );
+    }
+  })
+
+  useEffect( () => {
+    if( fullscreenShowControls ){
+      clearTimeout(fullscreenHideControlsTimeout.current);
+      fullscreenHideControlsTimeout.current = setTimeout( () => {
+        setFullscreenShowControls( false );
+      }, 3000 );
+      return () => {
+        clearTimeout(fullscreenHideControlsTimeout.current);
+      }
+    }
+  }, [fullscreenShowControls])
+
+  useEffect(() => {
+    const handleFullscreenMouseMove = (e) => {
+      setFullscreenShowControls(true);
+    }
+    if( isFullscreen ) {
+      window.addEventListener('mousemove', handleFullscreenMouseMove);
+    } else {
+      window.removeEventListener('mousemove', handleFullscreenMouseMove)
+    }
+    return () => window.removeEventListener('mousemove', handleFullscreenMouseMove);
+  }, [isFullscreen]);
+
   useEffect( () => {    
     if( isStreaming ){
       setIsPlaying( true );
@@ -75,10 +116,12 @@ const Stream = function({
   if( isStreaming ){
     return (
       <article 
-        className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}`}
+        className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}${(isFullscreen) ? ' stream__fullscreen' : ''}`}
         ref={ streamWrapper }
+        onMouseMove={mouseMove}        
       >
-        <div className="stream--controls">
+        <div 
+          className={`stream--controls${(fullscreenShowControls ? ' fullscreen-show' : '')}`}>
           <div className="controls--live is-live">
             LIVE
           </div>

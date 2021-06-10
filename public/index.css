@@ -207,6 +207,10 @@ STREAM SECTION
       max-width: 100%;
     }
 
+    .stream .stream--media .stream--player{
+      pointer-events: none;
+    }
+
   .stream .stream--placeholder{
     height: 100%;
     width: 100%;
@@ -226,12 +230,17 @@ STREAM SECTION
   z-index: 99;
   transform: translateY(100%);
   animation: slide-down 1s ease-in-out 7s;
-  animation-fill-mode: both;
+  animation-fill-mode: both;  
 } 
   body.cancel-fade .stream--controls{
     /*animate immediately*/
     animation: slide-down 1s ease-in-out;
     animation-fill-mode: both;
+  }
+
+  .stream.stream__fullscreen .stream--controls{
+    will-change: opacity;
+    transition: opacity .2s ease-out;
   }
   @media (min-width: 720px){
     .stream--controls{
@@ -292,7 +301,12 @@ STREAM SECTION
     }
 
 
- 
+  .stream__fullscreen .stream--controls{
+    opacity: 0;
+  }
+    .stream__fullscreen .stream--controls.fullscreen-show{
+      opacity: 1;
+    }
 
 
 /***********************************
