@@ -83,23 +83,23 @@ body{
 }
 
   body.streaming{
-    background: #111111;
+    background: #333333;
     color: #FFFFFF;
   }
     body.streaming .txt .fig--footnote{
-      background: #111111;
+      background: #333333;
       color: #FFFFFF;
       border-color: #FFFFFF;
     }    
 
   body.not-streaming{
     background: #FFFFFF;
-    color: #111111;
+    color: #333333;
   }
     body.not-streaming .txt .fig--footnote{
       background: #FFFFFF;
-      color: #111111;
-      border-color: #111111;
+      color: #333333;
+      border-color: #333333;
     }    
 
 
@@ -371,22 +371,22 @@ body.streaming .stream--controls button svg path{
     color: #FFFFFF;
   }
   /* body.streaming .stream--controls input[type=range]::-webkit-slider-runnable-track {
-    background: #111111;
+    background: #333333;
   }
   body.streaming .stream--controls input[type=range]::-moz-range-track {
-    background: #111111;
+    background: #333333;
   }  
   body.streaming .stream--controls input[type=range]::-ms-fill-lower {
-    background: #111111;
+    background: #333333;
   }
   body.streaming .stream--controls input[type=range]::-ms-fill-upper {
-    background: #111111;
+    background: #333333;
   }  
   body.streaming .stream--controls input[type=range]:focus::-ms-fill-lower {
-    background: #111111;
+    background: #333333;
   }
   body.streaming .stream--controls input[type=range]:focus::-ms-fill-upper {
-    background: #111111;
+    background: #333333;
   } */
 
 /***********************************
