@@ -81,6 +81,9 @@ MODES
 body{
   transition: background-color 8s ease-out, color 8s ease-in;
 }
+  body.cancel-fade{
+    transition: none;
+  }
 
   body.streaming{
     background: #333333;
@@ -224,6 +227,11 @@ STREAM SECTION
   animation: slide-down 1s ease-in-out 7s;
   animation-fill-mode: both;
 } 
+  body.cancel-fade .stream--controls{
+    /*animate immediately*/
+    animation: slide-down 1s ease-in-out;
+    animation-fill-mode: both;
+  }
   @media (min-width: 720px){
     .stream--controls{
       padding: 0.4rem 0.6rem 0.7rem;
@@ -231,6 +239,10 @@ STREAM SECTION
       animation-fill-mode: both;
       top: auto;
       bottom: 0;
+    }
+    body.cancel-fade .stream--controls{
+      animation: slide-up 1s ease-in-out;
+      animation-fill-mode: both;
     }
   } 
   .stream--controls .controls--bar{

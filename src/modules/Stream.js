@@ -96,7 +96,7 @@ const Stream = function({
             {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
           </button>
         </div>
-        <div className="stream--media">
+        <div className="stream--media">         
           <ReactPlayer
             className="stream--player"
             ref={ player }

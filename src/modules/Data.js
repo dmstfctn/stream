@@ -1,5 +1,5 @@
 const loadTime = new Date();
-const startTime = (new Date(loadTime.getTime() - 10000));
+const startTime = (new Date(loadTime.getTime() - 600000));
 
 const Data = {
   config: {
