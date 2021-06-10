@@ -246,7 +246,7 @@ STREAM SECTION
     }
   } 
   .stream--controls .controls--bar{
-    height: .8rem;
+    height: .2rem;
     background: #FF0000;
     flex-grow: 2;
     margin: 0 .4rem;
