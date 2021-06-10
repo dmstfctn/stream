@@ -43,7 +43,7 @@ function App() {
     if( isStreaming ){
       document.body.classList.add('streaming');
       document.body.classList.remove('not-streaming');
-      if( now - currentStreamStart > 7000 ){
+      if( now - currentStreamStart > 8000 ){
         document.body.classList.add('cancel-fade');
       }
     } else {
