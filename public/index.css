@@ -115,7 +115,16 @@ STREAM SECTION
 ************************************
 ***********************************/
 
-@keyframes slide-in {
+@keyframes slide-down {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
   0%{
     transform: translateY(100%);
   }
@@ -205,15 +214,23 @@ STREAM SECTION
   display: flex;
   justify-content:space-around;    
   position: fixed;  
-  bottom: 0;
+  top: 0;
   width: 100%; 
   box-sizing: border-box;
-  padding: .4rem 0.6rem 0.7rem;
+  padding: 0.7rem 0.6rem 0.4rem;
   z-index: 99;
   transform: translateY(100%);
-  animation: slide-in 1s ease-in-out;
+  animation: slide-down 1s ease-in-out;
   animation-fill-mode: both;
-}
+} 
+  @media (min-width: 720px){
+    .stream--controls{
+      padding: 0.4rem 0.6rem 0.7rem;
+      animation: slide-up 1s ease-in-out;
+      top: auto;
+      bottom: 0;
+    }
+  }
   .stream--controls button{
     color: #000000;
     transition: color .75s ease-in;
