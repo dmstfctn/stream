@@ -32,6 +32,7 @@ const Stream = function({
   const liveNotLive = () => {
     if( !isLive ){
       alignVideo();
+      setIsPlaying( true );
     }
     setIsLive( !isLive );
   }
