@@ -511,6 +511,7 @@ TEXT / ESSAY
     border-top: 1px solid;
   }
     .txt .fig--footnote .footnote--num{
+      display: block;
       font-size: .6rem;
     }
     .txt .fig--footnote p{
