@@ -192,6 +192,8 @@ const Stream = function({
     >
       <div className="stream--media">
         <img 
+          width="1600" 
+          height="1200"
           alt="Screenshot from ECHO FX containing a twitter avatar of a face in red and black with text that reads @klobo15 Farage told Sky that REMAIN will edge it"
           className="stream--placeholder"
           src={placeholderSrc}
