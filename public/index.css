@@ -79,7 +79,7 @@ MODES
 ************************************
 ***********************************/
 body{
-  transition: background-color 4s ease-out, color 4s ease-in;
+  transition: background-color 8s ease-out, color 8s ease-in;
 }
 
   body.streaming{
@@ -275,8 +275,7 @@ STREAM SECTION
   .stream--controls input[type=range]:focus {
     outline: none;
   }
-  .stream--controls input[type=range]::-webkit-slider-runnable-track {
-    transition: background-color 4s ease-out;
+  .stream--controls input[type=range]::-webkit-slider-runnable-track {   
     background: transparent;
     border: 0;
     width: 100%;
@@ -294,11 +293,9 @@ STREAM SECTION
     border-radius: 0;
   }
   .stream--controls input[type=range]:focus::-webkit-slider-runnable-track {
-    transition: background-color 4s ease-out;
     background: transparent
   }
   .stream--controls input[type=range]::-moz-range-track {
-    transition: background-color 4s ease-out;
     background: transparent;
     border: 0;
     width: 100%;
@@ -323,12 +320,10 @@ STREAM SECTION
     cursor: pointer;
   }
   .stream--controls input[type=range]::-ms-fill-lower {
-    transition: background-color 4s ease-out;
     background: transparent;
     border: 0;
   }
   .stream--controls input[type=range]::-ms-fill-upper {
-    transition: background-color 4s ease-out;
     background: transparent;
     border: 0;
   }
@@ -343,11 +338,9 @@ STREAM SECTION
     /*Needed to keep the Edge thumb centred*/
   }
   .stream--controls input[type=range]:focus::-ms-fill-lower {
-    transition: background-color 4s ease-out;
     background: transparent;
   }
   .stream--controls input[type=range]:focus::-ms-fill-upper {
-    transition: background-color 4s ease-out;
     background: transparent;
   }
   /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
