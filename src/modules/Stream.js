@@ -3,6 +3,13 @@ import { findDOMNode } from 'react-dom'
 import ReactPlayer from 'react-player/vimeo'
 import screenfull from 'screenfull'
 
+import { ReactComponent as SvgFullscreen } from '../svg/fullscreen.svg'
+import { ReactComponent as SvgFullscreenReduce } from '../svg/fullscreen-reduce.svg'
+import { ReactComponent as SvgPlay } from '../svg/play.svg'
+import { ReactComponent as SvgPause } from '../svg/pause.svg'
+import { ReactComponent as SvgMute } from '../svg/mute.svg'
+import { ReactComponent as SvgUnMute } from '../svg/unmute.svg'
+
 const Stream = function({ 
   progress, 
   src, 
@@ -130,8 +137,17 @@ const Stream = function({
         ref={ streamWrapper }
       >
         <div className="stream--controls">
-          <button onClick={ playPause }>{isPlaying ? 'Pause' : 'Play' }</button>
-          <button onClick={ liveNotLive }>{(isLive) ? 'LIVE' : 'NOT LIVE'}</button>         
+          <button 
+            onClick={ playPause }
+          >
+            { (isPlaying) ? <SvgPause /> : <SvgPlay /> }
+          </button>
+          <button 
+            onClick={ liveNotLive } 
+            className={(isLive) ? 'controls--live is-live' : 'controls--live not-live'}
+          >
+            LIVE •
+          </button>         
           <input
             type='range' min={0} max={0.999999} step='any'
             value={amountPlayed}
@@ -139,8 +155,16 @@ const Stream = function({
             onChange={seekChange}
             onMouseUp={seekMouseUp}
           />
-          <button onClick={ muteUnmute }>{(isMuted) ? 'Unmute' : 'Mute'}</button>
-          <button onClick={ fullscreen }>{(isFullscreen) ? 'Exit Fullscreen' : 'Fullscreen'}</button>
+          <button 
+            onClick={ muteUnmute }
+          >
+            {(isMuted) ? <SvgUnMute /> : <SvgMute /> }
+          </button>
+          <button 
+            onClick={ fullscreen }
+          >
+            {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
+          </button>
         </div>
         <div className="stream--media">
           <ReactPlayer

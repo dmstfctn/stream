@@ -1,5 +1,5 @@
-// const loadTime = new Date();
-// const startTime = (new Date(loadTime.getTime() + 35000));
+const loadTime = new Date();
+const startTime = (new Date(loadTime.getTime() + 35000));
 
 const Data = {
   config: {
@@ -14,10 +14,10 @@ const Data = {
     }
   },
   streams: [
-    // {
-    //   start: startTime.getTime(),
-    //   title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
-    // },
+    {
+      start: startTime.getTime(),
+      title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
+    },
     // {
     //   start: 1622475900000,
     //   title: 'Monday 31 May, 2021. 17:45–17:47 CET (16:45–15:47 BST)'

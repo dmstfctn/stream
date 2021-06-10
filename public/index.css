@@ -158,29 +158,51 @@ STREAM SECTION
 .stream--controls{
   display: flex;
   justify-content:space-around;    
-  position: absolute;
-  bottom: 100%;   
+  position: fixed;  
+  bottom: 0;
   width: 100%; 
+  box-sizing: border-box;
+  padding: .4rem 0.6rem 0.7rem;
+  z-index: 99;
 }
   .stream--controls button{
-    color: #FF0000;
-    transition: background-color 4s ease-out, color 4s ease-in;
-    background-color: #FFFFFF;
+    color: #000000;
+    transition: color .75s ease-in;
+    background-color: transparent;
     height: 1rem;
     border: none;
     border-radius: 0;    
-    width: 6rem;
-    font-family: times, serif;
-    font-size: 1.06em;    
+    width: auto;
     cursor: pointer;
     padding: 0;
-    line-height: 1rem;
+    line-height: 1rem;    
+    margin: 0 .4rem;
+    font-family: inherit;
+    font-size: inherit;
   }
+  .stream--controls button svg{
+    height: 1.1rem;
+    width: 1.1rem;
+    transform: translateX(-.05rem) translateY(-.05rem);
+  }
+    .stream--controls button svg path{
+      fill: #000000;    
+    }
+    .stream--controls button.controls--live{
+      width: auto;
+      white-space: nowrap;
+      color: #FF0000;
+      margin-top: -0.1rem;
+    }
+    .stream--controls button.controls--live.not-live{
+      color: #000000;
+    }
+
 
   .stream--controls input[type=range] {
     width: 100%;
-    margin: 0px 0;
-    background-color: transparent;
+    margin: 0 .4rem;
+    background-color: rgba(0,0,0,0.1);
     -webkit-appearance: none;
   }
   .stream--controls input[type=range]:focus {
@@ -188,7 +210,7 @@ STREAM SECTION
   }
   .stream--controls input[type=range]::-webkit-slider-runnable-track {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
     border: 0;
     width: 100%;
     height: 1rem;
@@ -206,11 +228,11 @@ STREAM SECTION
   }
   .stream--controls input[type=range]:focus::-webkit-slider-runnable-track {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent
   }
   .stream--controls input[type=range]::-moz-range-track {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
     border: 0;
     width: 100%;
     height: 1rem;
@@ -235,12 +257,12 @@ STREAM SECTION
   }
   .stream--controls input[type=range]::-ms-fill-lower {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
     border: 0;
   }
   .stream--controls input[type=range]::-ms-fill-upper {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
     border: 0;
   }
   .stream--controls input[type=range]::-ms-thumb {
@@ -255,11 +277,11 @@ STREAM SECTION
   }
   .stream--controls input[type=range]:focus::-ms-fill-lower {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
   }
   .stream--controls input[type=range]:focus::-ms-fill-upper {
     transition: background-color 4s ease-out;
-    background: #ffffff;
+    background: transparent;
   }
   /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
   how to remove the virtical space around the range input in IE*/
@@ -270,12 +292,18 @@ STREAM SECTION
       /*Edge starts the margin from the thumb, not the track as other browsers do*/
     }
   }
-  
-body.streaming .stream--controls button{
-  color: #FFFFFF;
-  background-color: #111111;
+ 
+body.streaming .stream--controls button svg path{
+  fill: #FFFFFF;
 }
-  body.streaming .stream--controls input[type=range]::-webkit-slider-runnable-track {
+  body.streaming .stream--controls input[type=range]{
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  body.streaming .stream--controls button.controls--live.not-live{
+    color: #FFFFFF;
+  }
+  /* body.streaming .stream--controls input[type=range]::-webkit-slider-runnable-track {
     background: #111111;
   }
   body.streaming .stream--controls input[type=range]::-moz-range-track {
@@ -292,7 +320,7 @@ body.streaming .stream--controls button{
   }
   body.streaming .stream--controls input[type=range]:focus::-ms-fill-upper {
     background: #111111;
-  }
+  } */
 
 /***********************************
 ************************************
@@ -344,7 +372,7 @@ TEXT / ESSAY
   .txt .fig--visual{
     margin: 2rem 0;
   }
-    .fig--visual:last-child{
+    .txt > .fig--visual:last-child{
       margin-bottom: 0;
     }
     .fig--visual__inset{
@@ -377,18 +405,22 @@ TEXT / ESSAY
     height: auto;
     margin-left: auto;  
     margin-right: auto;
+    position: relative;
   }
-    .txt .fig--visual .video-container .mute-unmute{
-      font-family: times, serif;
-      font-size: 1.06em;
-      color: #FF0000;
-      text-decoration: underline;
+    .txt .fig--visual .video-container .mute-unmute{      
       background: none;
       border: none;
       font-size: inherit;
       padding: 0;
-      margin: .5rem 0 0 0;
+      width: 1.1rem;
+      height: 1.1rem;
+      position: absolute;      
+      top: 1rem;
+      right: 1rem;
       cursor: pointer;
+    }
+    .txt .fig--visual .video-container .mute-unmute svg path{
+      fill: #FFFFFF;
     }
       .txt .fig--visual .video-container .mute-unmute.muted .on-muted{
         display: block;
@@ -441,6 +473,7 @@ TEXT / ESSAY
     }
   .txt .fig--footnote.visible{
     transform: translateY(0);
+    padding-bottom: 2rem;
   }
     @media (min-width: 720px){
       .txt section,
@@ -455,8 +488,12 @@ TEXT / ESSAY
         right: 100%;
         left: auto;
         transform: none;
+        padding-bottom: 1rem;
         border: none;
         bottom: auto;
+      }
+      .txt .fig--footnote.visible{
+        padding-bottom: 1rem;
       }
     }
 
