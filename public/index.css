@@ -83,23 +83,23 @@ body{
 }
 
   body.streaming{
-    background: #000000;
+    background: #111111;
     color: #FFFFFF;
   }
     body.streaming .txt .fig--footnote{
-      background: #000000;
+      background: #111111;
       color: #FFFFFF;
       border-color: #FFFFFF;
     }    
 
   body.not-streaming{
     background: #FFFFFF;
-    color: #000000;
+    color: #111111;
   }
     body.not-streaming .txt .fig--footnote{
       background: #FFFFFF;
-      color: #000000;
-      border-color: #000000;
+      color: #111111;
+      border-color: #111111;
     }    
 
 
@@ -273,25 +273,25 @@ STREAM SECTION
   
 body.streaming .stream--controls button{
   color: #FFFFFF;
-  background-color: #000000;
+  background-color: #111111;
 }
   body.streaming .stream--controls input[type=range]::-webkit-slider-runnable-track {
-    background: #000000;
+    background: #111111;
   }
   body.streaming .stream--controls input[type=range]::-moz-range-track {
-    background: #000000;
+    background: #111111;
   }  
   body.streaming .stream--controls input[type=range]::-ms-fill-lower {
-    background: #000000;
+    background: #111111;
   }
   body.streaming .stream--controls input[type=range]::-ms-fill-upper {
-    background: #000000;
+    background: #111111;
   }  
   body.streaming .stream--controls input[type=range]:focus::-ms-fill-lower {
-    background: #000000;
+    background: #111111;
   }
   body.streaming .stream--controls input[type=range]:focus::-ms-fill-upper {
-    background: #000000;
+    background: #111111;
   }
 
 /***********************************
@@ -462,7 +462,7 @@ TEXT / ESSAY
 
   .txt a[href^="#ftnt"]{
     font-size: .6rem;
-    color: #000000;
+    color: #111111;
     text-decoration: none;
     vertical-align: super;
   }
