@@ -344,6 +344,9 @@ TEXT / ESSAY
   .txt .fig--visual{
     margin: 2rem 0;
   }
+    .fig--visual:last-child{
+      margin-bottom: 0;
+    }
     .fig--visual__inset{
       padding-left: 2rem;
       padding-right: 2rem;
