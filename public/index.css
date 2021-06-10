@@ -564,6 +564,19 @@ TEXT / ESSAY
     text-decoration: none;
     vertical-align: super;
     cursor: pointer;
+    position: relative;
+  }
+  .txt a[href^="#ftnt"]:after{
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
   }
     @media(min-width: 720px){
       .txt a[href^="#ftnt"]{
