@@ -50,7 +50,7 @@ function App() {
       document.body.classList.remove('streaming');
       document.body.classList.add('not-streaming');
     }
-  }, [isStreaming] );
+  }, [isStreaming, now, currentStreamStart] );
 
   useEffect( () => {
     let timeUpdate;
