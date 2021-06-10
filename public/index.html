@@ -118,6 +118,7 @@
               poster="%PUBLIC_URL%/media/farage.jpg" 
               width="480" 
               height="560" 
+              playsinline
               loop
               muted
             ></video>
@@ -137,7 +138,7 @@
           ECHO FX focuses on referendum night as it offered a rare set of conditions whereby a usually complex financial market (GBPUSD, or the Pound market in US Dollars) exposed itself in a simplified state. The Pound market responded to a clearly defined stimulus: a 9-hour stream of 382 local voting results, announcing one by one whether to Leave or Remain in the EU, as decided by a majority.
         </p>
         <p>
-          Given the information contained in the vote, the outcome could have been predicted hours before the Pound market adjusted to it: 20-30 local voting results would suffice for a simple algorithm to predict the outcome.<a href="#ftnt1">1</a> Such information would have been available in less than two hours from the first local result announcement. 
+          Given the information contained in the vote, the outcome could have been predicted hours before the Pound market adjusted to it: 20-30 local voting results would suffice for a simple prediction algorithm.<a href="#ftnt1">1</a> Such information would have been available in less than two hours from the first local result announcement. 
         </p>
         <figure class="fig--footnote" id="ftnt1">
           <div class="footnote--inner">
@@ -185,7 +186,7 @@
           </div>
         </figure>
         <p>
-          With the stream of local results most clearly aggregated and announced by the BBC’s Twitter feed on the night, Twitter was the primary source for information. It wasn’t until the results start to trickle in two hours later that Farage’s echoes subsided.<a href="#ftnt3">3</a> His words had been repeated at least <a target="_blank" href="https://twitter.com/search?q=farage%20edge%20until%3A2016-06-25%20since%3A2016-06-23&src=typed_query&f=live">6000 times</a> by then. 
+          With the stream of local results most clearly aggregated and announced by the BBC’s Twitter feed on the night, Twitter was the primary source for information. It wasn’t until the results start to trickle in two hours later that Farage’s echoes subsided.<a href="#ftnt3">3</a> His words had been repeated at least <a target="_blank" href="https://twitter.com/search?q=farage%20remain%20edge%20until%3A2016-06-25%20since%3A2016-06-23&src=typed_query&f=live">6000 times</a> by then. 
         </p>
         <figure class="fig--footnote" id="ftnt3">
           <div class="footnote--inner">
@@ -272,14 +273,17 @@
       /* hide / show on small screen */
      
       $footnoteLinks.forEach( function($link){
-        $link.addEventListener('click', function(){
-          var $footnote = document.querySelector($link.getAttribute('href'));
-          $footnote.classList.toggle('visible');
-          $footnotes.forEach(function( $otherFootnote ){
-            if( $footnote.id !== $otherFootnote.id ){
-              $otherFootnote.classList.remove('visible');
-            }
-          })
+        $link.addEventListener('click', function( e ){
+          e.preventDefault();
+          if( window.innerWidth < footnoteBreakpoint ){
+            var $footnote = document.querySelector($link.getAttribute('href'));
+            $footnote.classList.toggle('visible');
+            $footnotes.forEach(function( $otherFootnote ){
+              if( $footnote.id !== $otherFootnote.id ){
+                $otherFootnote.classList.remove('visible');
+              }
+            })
+          }
         });
       });
 

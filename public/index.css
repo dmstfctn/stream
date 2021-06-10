@@ -570,7 +570,13 @@ TEXT / ESSAY
     color: #000000;
     text-decoration: none;
     vertical-align: super;
+    cursor: pointer;
   }
+    @media(min-width: 720px){
+      .txt a[href^="#ftnt"]{
+        cursor: default;
+      }
+    }
     body.streaming .txt a[href^="#ftnt"]{
       color: #FFFFFF;
     }
