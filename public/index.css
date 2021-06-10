@@ -86,23 +86,23 @@ body{
   }
 
   body.streaming{
-    background: #333333;
+    background: #222222;
     color: #FFFFFF;
   }
     body.streaming .txt .fig--footnote{
-      background: #333333;
+      background: #222222;
       color: #FFFFFF;
       border-color: #FFFFFF;
     }    
 
   body.not-streaming{
     background: #FFFFFF;
-    color: #333333;
+    color: #222222;
   }
     body.not-streaming .txt .fig--footnote{
       background: #FFFFFF;
-      color: #333333;
-      border-color: #333333;
+      color: #222222;
+      border-color: #222222;
     }    
 
 
