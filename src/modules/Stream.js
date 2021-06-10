@@ -3,12 +3,11 @@ import { findDOMNode } from 'react-dom'
 import ReactPlayer from 'react-player/vimeo'
 import screenfull from 'screenfull'
 
-import './Stream.css';
-
 const Stream = function({ 
   progress, 
   src, 
   placeholderSrc, 
+  placeholder1000Src,
   isLeadIn, 
   isStreaming 
 }){
@@ -171,7 +170,12 @@ const Stream = function({
         <img 
           alt="Screenshot from ECHO FX containing a twitter avatar of a face in red and black with text that reads @klobo15 Farage told Sky that REMAIN will edge it"
           className="stream--placeholder"
-          src={placeholderSrc} 
+          src={placeholderSrc}
+          srcSet={`
+            ${placeholderSrc} 1600w,
+            ${placeholder1000Src} 1000w
+          `}
+          sizes="100vw"
         />
       </div>
     </article>

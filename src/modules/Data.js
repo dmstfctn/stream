@@ -1,14 +1,16 @@
-//const loadTime = new Date();
-//const startTime = (new Date(loadTime.getTime() + 20000));
+// const loadTime = new Date();
+// const startTime = (new Date(loadTime.getTime() + 35000));
 
 const Data = {
   config: {
-    src: "https://vimeo.com/556605464",
+    src: "https://vimeo.com/559393481",
     timing: {
       // streamLength: 1800000, //30min
       // leadIn: 1800000, //30min
-      streamLength: 123000, //2:03
-      leadIn: 10000, //10sec
+      //streamLength: 123000, //2:03      
+      //leadIn: 10000, //10sec
+      streamLength: 1184000, //19:44
+      leadIn: 30000
     }
   },
   streams: [
@@ -23,11 +25,11 @@ const Data = {
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
     {
       start: 1624473000000, 
-      title: 'Wed 23 June, 2021 19:30 BST (20:30 CET)'
+      title: 'Wed 23 June, 2021 19:30 BST (20:30 CEST)'
     },
     {      
       start: 1625086800000, //times in ms
-      title: 'Wed 30 June, 2021 21:00 BST (22:00 CET)'
+      title: 'Wed 30 June, 2021 19:30 BST (20:30 CEST)'
     },
   ]
 }

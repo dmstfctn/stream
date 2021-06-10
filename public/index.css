@@ -4,27 +4,76 @@ html, body {
   width: 100%;
 }
 
-  html{
-    font-family: 'helvetica neue', arial, helvetica, sans-serif;
+html{
+  font-family: 'helvetica neue', arial, helvetica, sans-serif;
+}
+  @media (min-width: 1024px){
+    html{
+      font-size: 1.45vw;
+    }
   }
-    @media (min-width: 1024px){
-      html{
-        font-size: 1.45vw;
-      }
-    }
-  body{
-    transition: background-color 4s ease-out, color 4s ease-in;    
+
+.serif{
+  font-family: times, serif;
+}
+.italic{
+  font-style: italic;
+}
+a,
+.red{
+  color: #FF0000;
+}
+
+
+/***********************************
+************************************
+************************************
+************************************
+
+HEADER
+
+************************************
+************************************
+************************************
+***********************************/
+
+header{
+  box-sizing: border-box;
+  padding: 2rem 2rem 0 2rem;  
+  text-align: center;
+}
+  header h1{
+    font-family: times, serif;
+    color: #ff0000;
+    font-style: italic;
   }
-    .serif{
-      font-family: times, serif;
-    }
-    .italic{
-      font-style: italic;
-    }
-    a,
-    .red{
-      color: #FF0000;
-    }
+  header h1,
+  header h2{
+    font-weight: normal;
+    font-size: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  header hgroup{
+    margin-bottom: 0;
+  }
+  
+
+/***********************************
+************************************
+************************************
+************************************
+
+MODES
+
+************************************
+************************************
+************************************
+***********************************/
+body{
+  transition: background-color 4s ease-out, color 4s ease-in;    
+}
+
   body.streaming{
     background: #000000;
     color: #FFFFFF;
@@ -45,139 +94,329 @@ html, body {
       border-color: #000000;
     }    
 
-  header{
-    box-sizing: border-box;
-    padding: 2rem 2rem 0 2rem;  
+
+/***********************************
+************************************
+************************************
+************************************
+
+STREAM SECTION
+
+************************************
+************************************
+************************************
+***********************************/
+
+.stream-wrapper{  
+  width: 100%;  
+} 
+
+  .stream-wrapper .upcoming-streams{
     text-align: center;
+    padding: 2rem 1rem;  
+    box-sizing: border-box;
   }
-    header h1{
-      font-family: times, serif;
-      color: #ff0000;
-      font-style: italic;
+  .stream-wrapper .upcoming-streams ol{
+    list-style-type: none;    
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+  }    
+    .stream-wrapper .upcoming-streams .remaining{
+      margin-left: .5em;
+      white-space: nowrap;
     }
-    header h1,
-    header h2{
-      font-weight: normal;
-      font-size: 1rem;
-      margin-bottom: 0;
+
+.stream{
+  height: 100%;
+  max-height: 100vh;
+}
+  .stream .stream--media{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+    max-height: 100vh;
+  }
+
+  .stream .stream--placeholder{
+    height: 100%;
+    width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+  }
+
+  .stream--controls{
+    display: flex;
+    justify-content:space-around;
+  }
+  .stream--controls button{
+    height: 2rem;
+    border: none;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    width: 6rem;
+    font-family: inherit;
+    font-size: .8rem;
+  }
+
+
+  .stream--controls input[type=range] {
+    width: 100%;
+    margin: 0px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+  }
+  .stream--controls input[type=range]:focus {
+    outline: none;
+  }
+  .stream--controls input[type=range]::-webkit-slider-runnable-track {
+    background: #ffffff;
+    border: 0;
+    width: 100%;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .stream--controls input[type=range]::-webkit-slider-thumb {
+    margin-top: 0px;
+    width: 1rem;
+    height: 2rem;
+    background: #000000;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .stream--controls input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ffffff;
+  }
+  .stream--controls input[type=range]::-moz-range-track {
+    background: #ffffff;
+    border: 0;
+    width: 100%;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .stream--controls input[type=range]::-moz-range-thumb {
+    width: 1rem;
+    height: 2rem;
+    background: #000000;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+  }
+  .stream--controls input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 0px 0;
+    color: transparent;
+    width: 100%;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .stream--controls input[type=range]::-ms-fill-lower {
+    background: #f2f2f2;
+    border: 0;
+  }
+  .stream--controls input[type=range]::-ms-fill-upper {
+    background: #ffffff;
+    border: 0;
+  }
+  .stream--controls input[type=range]::-ms-thumb {
+    width: 1rem;
+    height: 2rem;
+    background: #000000;
+    border: 0;
+    cursor: pointer;
+    margin-top: 0px;
+    border-radius: 0;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  .stream--controls input[type=range]:focus::-ms-fill-lower {
+    background: #ffffff;
+  }
+  .stream--controls input[type=range]:focus::-ms-fill-upper {
+    background: #ffffff;
+  }
+  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+  how to remove the virtical space around the range input in IE*/
+  @supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    .stream--controls input[type=range] {
+      margin: 0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+  }
+  
+
+/***********************************
+************************************
+************************************
+************************************
+
+PLACEHOLDER FOR STREAM LOAD
+
+************************************
+************************************
+************************************
+***********************************/
+
+@media ( orientation: portrait ){
+  #stream-root.loading{
+    min-height: calc( (100vw/4) * 3);;
+  }
+  .stream-wrapper__placeholder .stream{
+    height: calc( (100vw/4) * 3);
+  }
+}
+
+@media ( orientation: landscape ){
+  #stream-root.loading{
+    min-height: 100vh;
+  }
+  .stream-wrapper__placeholder .stream{
+    height:100vh;    
+  }
+}
+
+
+/***********************************
+************************************
+************************************
+************************************
+
+TEXT / ESSAY
+
+************************************
+************************************
+************************************
+***********************************/
+
+.txt{
+  padding-top: 1rem;
+}
+
+  .txt .fig--visual{
+    margin: 2rem 0;
+  }
+    .fig--visual__inset{
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .txt .fig--visual .tweet{
+      font-size: 0.8rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .txt .fig--visual .tweet .twitter-tweet{
+      transform: scale(0.82);
+    }
+  .txt .fig--visual img,
+  .txt .fig--visual video{
+    display: block;
+    height: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+    .txt .fig--visual img+img{
+      margin-top: 1rem;
+    }
+
+  .txt .fig--visual .video-container{
+    max-width: 70%;
+    height: auto;
+    margin-left: auto;  
+    margin-right: auto;
+  }
+    .txt .fig--visual .video-container .mute-unmute{
+      font-family: times, serif;
+      color: #FF0000;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      font-size: inherit;
+      padding: 0;
+      margin: .5rem 0 0 0;
+      cursor: pointer;
+    }
+      .txt .fig--visual .video-container .mute-unmute.muted .on-muted{
+        display: block;
+      }
+      .txt .fig--visual .video-container .mute-unmute.muted .on-unmuted{
+        display: none;
+      }
+      .txt .fig--visual .video-container .mute-unmute.unmuted .on-unmuted{
+        display: block;
+      }
+      .txt .fig--visual .video-container .mute-unmute.unmuted .on-muted{
+        display: none;
+      }
+
+
+  .txt .fig--visual__large img{
+    width: 100%;
+  }
+
+  .txt section,
+  .txt footer{      
+    box-sizing: border-box;
+    padding: 0 2rem;
+    margin: 0 auto;
+    position: relative;
+  }
+  .txt footer{    
+    padding-bottom: 10rem;
+    padding-bottom: 10vh;
+  }
+  .txt .fig--footnote{          
+    font-size: 0.8em;      
+    padding: 1rem 2rem;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    transition: .3s ease-out;
+    z-index: 50;
+    border-top: 1px solid;
+  }
+    .txt .fig--footnote p{
       margin-top: 0;
     }
-    header hgroup{
-      margin-bottom: 0;
-    }
-
-    .txt{
-      padding-top: 1rem;
-    }
-
-    .txt .fig--visual{
-      margin: 2rem 0;
-    }
-      .fig--visual__inset{
-        padding-left: 2rem;
-        padding-right: 2rem;
+  .txt .fig--footnote.visible{
+    transform: translateY(0);
+  }
+    @media (min-width: 720px){
+      .txt section,
+      .txt footer{
+        width: 47%;
       }
-      .txt .fig--visual .tweet{
-        font-size: 0.8rem;
-        width: 100%;
-        margin: 0 auto;
-      }
-      .txt .fig--visual .tweet .twitter-tweet{
-        transform: scale(0.82);
-      }
-    .txt .fig--visual img,
-    .txt .fig--visual video{
-      display: block;
-      height: auto;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-      .txt .fig--visual img+img{
-        margin-top: 1rem;
-      }
-
-    .txt .fig--visual .video-container{
-      max-width: 70%;
-      height: auto;
-      margin-left: auto;  
-      margin-right: auto;
-    }
-      .txt .fig--visual .video-container .mute-unmute{
-        font-family: times, serif;
-        color: #FF0000;
-        text-decoration: underline;
-        background: none;
-        border: none;
-        font-size: inherit;
+      .txt .fig--footnote{          
         padding: 0;
-        margin: .5rem 0 0 0;
-        cursor: pointer;
+        text-align: right;
+        width: 15vw;  
+        position: absolute;
+        right: 100%;
+        left: auto;
+        transform: none;
+        border: none;
+        bottom: auto;
       }
-
-    .txt .fig--visual__large img{
-      width: 100%;
     }
 
-    .txt section,
-    .txt footer{      
-      box-sizing: border-box;
-      padding: 0 2rem;
-      margin: 0 auto;
-      position: relative;
-    }
-    .txt footer{    
-      padding-bottom: 10rem;
-      padding-bottom: 10vh;
-    }
-    .txt .fig--footnote{          
-      font-size: 0.8em;      
-      padding: 1rem 2rem;
-      margin: 0;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      transform: translateY(100%);
-      transition: .3s ease-out;
-      z-index: 50;
-      border-top: 1px solid;
-    }
-      .txt .fig--footnote p{
-        margin-top: 0;
-      }
-    .txt .fig--footnote.visible{
-      transform: translateY(0);
-    }
-      @media (min-width: 720px){
-        .txt section,
-        .txt footer{
-          width: 47%;
-        }
-        .txt .fig--footnote{          
-          padding: 0;
-          text-align: right;
-          width: 15vw;  
-          position: absolute;
-          right: 100%;
-          left: auto;
-          transform: none;
-          border: none;
-          bottom: auto;
-        }
-      }
-
-    .txt a[href^="#ftnt"]{
-      font-size: .6em;
-      color: #000000;
-      text-decoration: none;
-      vertical-align: super;
-    }
-    .txt q,
-    .txt .fig--footnote,
-    .txt a{
-      font-family: times, serif;
-    }
-    .txt q{
-      font-style: italic;
-    }
+  .txt a[href^="#ftnt"]{
+    font-size: .6em;
+    color: #000000;
+    text-decoration: none;
+    vertical-align: super;
+  }
+  .txt q,
+  .txt .fig--footnote,
+  .txt a{
+    font-family: times, serif;
+  }
+  .txt q{
+    font-style: italic;
+  }

@@ -6,8 +6,6 @@ import Data from './modules/Data.js';
 import getTime from './helpers/getTime.js';
 import humanTimeRemaining from './helpers/humanTimeRemaining.js';
 
-import './App.css';
-
 const sortStreams = ( streams, _now ) => {
   const now = _now || (new Date()).getTime();
   return streams.filter((stream) => {
@@ -87,7 +85,7 @@ function App() {
     }
   }, []);
 
-  const wrapperClasses = `wrapper ${(isStreaming) ? 'streaming' : 'not-streaming' }`
+  const wrapperClasses = `stream-wrapper ${(isStreaming) ? 'streaming' : 'not-streaming' }`
 
   return (
     <div
@@ -96,7 +94,7 @@ function App() {
     {/* <aside className="time">
         {`${new Date(now).getHours()}:${new Date(now).getMinutes()}:${new Date(now).getSeconds()}`}
     </aside> */}
-    <nav>
+    <nav className="upcoming-streams">
       <div>
         Upcoming Streams:
         <ol>
@@ -113,15 +111,16 @@ function App() {
                 </span> : ''}
               </li>
             )
-          })}         
+          })}
         </ol>
       </div>
-    </nav>   
+    </nav>
     <Stream 
       progress={now - currentStreamStart}
       isStreaming={isStreaming}
       isLeadIn={isLeadIn}
       placeholderSrc={process.env.PUBLIC_URL + '/media/face1.jpg'}
+      placeholder1000Src={process.env.PUBLIC_URL + '/media/face1-1000px.jpg'}
       src={Data.config.src} 
     />       
     </div>

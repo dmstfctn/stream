@@ -35,8 +35,22 @@
       </hgroup>
     </header>
     <noscript>Please enable JavaScript to view the stream.</noscript>
-    <div id="root">
-      
+    <div id="stream-root" class="loading">
+      <div class="stream-wrapper stream-wrapper__placeholder">
+        <nav class="upcoming-streams">
+          <div>
+            Upcoming Streams:
+            <ol>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+            </ol>
+          </div>
+        </nav>
+        <article class="stream">
+          <div className="stream--media">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" width="1600" height="1200">
+        </article>
+      </div>
     </div>
     <article class="txt">
       <section class="txt--timings">
@@ -65,14 +79,22 @@
         </p>
       </section>
       <figure class="fig--visual fig--visual__large">
-        <img src="%PUBLIC_URL%/media/image1.jpg" alt="">
+        <img 
+          src="%PUBLIC_URL%/media/image1.jpg" 
+          alt="A stack of values for the £ showing it crashing. A time at the top shows 00:17:56"
+          srcset="
+            %PUBLIC_URL%/media/image1.jpg 1600w,
+            %PUBLIC_URL%/media/image1-1000px.jpg 1000w
+          "
+          sizes="100vw"
+        />
       </figure>
       <section class="txt--performance">
         <p>
           ECHO FX replays the night’s events using Twitter and FX market data to generate sound and images, alongside footage of traders who shorted the Pound. 
         </p>
         <p>
-          The piece was originally screened on the third anniversary week of the referendum night as part of Hyperdub's party series <a href="#">Ø</a> (Corsica Studios, London, June 2019) and performed 48 hours before the United Kingdom left the European Union as part of <a href="#">CTM x transmediale festival</a> (Berghain, Berlin, January 2020).
+          The piece was originally screened on the third anniversary week of the referendum night as part of Hyperdub's party series <a href="https://zerø.info/#Ø29">Ø</a> (Corsica Studios, London, June 2019) and performed 48 hours before the United Kingdom left the European Union as part of <a href="https://2020.transmediale.de/content/echo-fx-demystification-committee">CTM x transmediale festival</a> (Berghain, Berlin, January 2020).
         </p>
         <p>
           The week of 23-30 June, 2021 marks the fifth anniversary since referendum night and is the last week of the grace period, after which a person’s presence in the UK is no longer tolerated, unless they are UK citizen or have settled status.
@@ -81,7 +103,7 @@
           As the consequences of Brexit become tangible, details of the events replayed in ECHO FX remain unclear, such as the legality of polling companies’ sale of private polls, or whether Farage, a former trader, had any personal dealings in this venture.
         </p>
         <p>
-          To mark this symbolic anniversary, ECHO FX will be streamed on <a href="">stream.demystification.co</a> on the evenings of June 23, 2021 - the fifth anniversary of the referendum, and June 30, 2021 - the last day of the grace period.
+          To mark this symbolic anniversary, ECHO FX will be streamed on <a href="https://stream.demystification.co">stream.demystification.co</a> on the evenings of June 23, 2021 - the fifth anniversary of the referendum, and June 30, 2021 - the last day of the grace period.
         </p>
         <figure class="fig--visual">
           <div class="video-container">
@@ -93,7 +115,10 @@
               loop
               muted
             ></video>
-            <button class="mute-unmute">can't hear you</button>
+            <button class="mute-unmute muted">
+              <span class="on-muted">unmute</span>
+              <span class="on-unmuted">mute</span>
+            </button>
           </div>
         </figure>
       </section>      
@@ -108,7 +133,7 @@
           <div class="footnote--inner">
             <span class="footnote--num">1</span>
             <p>
-              Wu, K., Wheatley, S. and Sornette, D, <a href="">Inefficiency and predictability in the Brexit Pound market: a natural experiment</a>, The European Journal of Finance, (2020)
+              Wu, K., Wheatley, S. and Sornette, D, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2940173">Inefficiency and predictability in the Brexit Pound market: a natural experiment</a>, The European Journal of Finance, (2020)
             </p>          
             <p>
               Although written with the benefit of hindsight, the algorithm developed therein demonstrates the inefficiency of the Pound market by comparing the probability of a Leave win it estimates based on the stream of voting results with the probability implied by the Pound market on referendum night
@@ -119,7 +144,10 @@
           However, the Pound market took much longer to adjust to the outcome. Its inefficiency was behavioural, a matter of confirmation bias - traders did not want to believe that the UK was voting to leave the EU.
         </p>
         <figure class="fig--visual fig--visual__inset">
-          <img src="%PUBLIC_URL%/media/graph1.png" alt="">
+          <img 
+            src="%PUBLIC_URL%/media/graph1.png" 
+            alt="A line graph showing that betting markets modified their odds before the foreign exchange market reacted"            
+          />
         </figure>
         <p>
           While the largest betting market (Betfair) <a href="#ftnt2">2</a> inverted their odds in favour of Brexit two hours after the first result announcement, reflecting the information contained in the vote, the Pound market continued to be driven by a Remain sentiment. Only when the referendum outcome became inevitable, over three hours after the first result announcement, the market finally crashed.
@@ -131,7 +159,7 @@
               The figure above shows the Betfair and Pound markets for the period of the announcement of results.
             </p>          
             <p>
-              For a comprehensive analysis see Auld, T. and Linton, O., <a href="">The Behaviour of Betting and Currency Markets on the Night of the EU Referendum</a>, (2017)
+              For a comprehensive analysis see Auld, T. and Linton, O., <a href="https://ifs.org.uk/uploads/CWP011818.pdf">The Behaviour of Betting and Currency Markets on the Night of the EU Referendum</a>, (2017)
             </p>
           </div>       
         </figure>
@@ -156,12 +184,20 @@
               The figure underneath shows five affect components within the contents of Twitter at UK level and the GBPEUR for 48 hours, starting from June 23, 2016.
             </p>
             <p>
-              See Lansdall-Welfare, T., Dzogang, F. and Cristianini, N., <a href="">Change-point Analysis of the Public Mood in UK Twitter during the Brexit Referendum</a> (2016)
+              See Lansdall-Welfare, T., Dzogang, F. and Cristianini, N., <a href="https://research-information.bris.ac.uk/en/publications/change-point-analysis-of-the-public-mood-in-uk-twitter-during-the">Change-point Analysis of the Public Mood in UK Twitter during the Brexit Referendum</a> (2016)
             </p>
           </div>
         </figure>
         <figure class="fig--visual fig--visual__inset">
-          <img src="%PUBLIC_URL%/media/graph2.jpg" alt="">
+          <img 
+            src="%PUBLIC_URL%/media/graph2.png" 
+            alt="Line graphs showing relationship between the exchange rate and negative affect, anger, anxiety and sadness as expressed on twitter" 
+            srcset="
+              %PUBLIC_URL%/media/graph2.png 1882w,
+              %PUBLIC_URL%/media/graph2-1000px.png 1000w
+            "
+            sizes="@media (min-width: 720px) 47vw, 100vw"
+          />
         </figure>
         <p>
           On the days leading to the referendum some polling companies had undertaken private in-depth polls that showed a likely Leave win. As news outlets were sold polls pointing to a Remain win, confirming the Pound market’s bias even before Farage’s concession, some London City traders were sold the in-depth private polls.
@@ -171,11 +207,19 @@
         </p>
       </section>
       <figure class="fig--visual fig--visual__large">
-        <img src="%PUBLIC_URL%/media/image2.jpg" alt="">
+        <img 
+          src="%PUBLIC_URL%/media/image2.jpg" 
+          alt="The corner of a trader's offices on Queen Street in London. Text reads 'A well timed echo on foreign exchange markets', the time shown is 22:00."
+          srcset="
+            %PUBLIC_URL%/media/image2.jpg 1600w,
+            %PUBLIC_URL%/media/image2-1000px.jpg 1000w
+          "
+          sizes="100vw"
+        />
       </figure>
       <section class="txt-release">
         <p>        
-          In fall 2021, ECHO FX will be released by <a href="">Krisis Publishing</a> as a limited edition booklet accompanied by HQ digital download. The booklet includes contributions by the Demystification Committee, Obsolete Capitalism, Krisis Publishing and others.
+          In fall 2021, ECHO FX will be released by <a href="http://www.krisispublishing.com/">Krisis Publishing</a> as a limited edition booklet accompanied by HQ digital download. The booklet includes contributions by the Demystification Committee, Obsolete Capitalism, Krisis Publishing and others.
         </p>
       </section>
       <footer>
@@ -211,13 +255,16 @@
         });
       }
 
-      alignFootnotes();
-      window.addEventListener('resize', function(){
+      var positionFootnotes = function(){
         if( window.innerWidth > footnoteBreakpoint ){
           alignFootnotes();
         } else {
           clearAlignFootnotes();
         }
+      }
+      
+      window.addEventListener('resize', function(){
+        positionFootnotes();
       });
 
 
@@ -278,9 +325,11 @@
         $muteUnmute.addEventListener('click', function(){
           $video.muted = !$video.muted;    
           if( $video.muted ){
-            $muteUnmute.innerHTML = "can't hear you";
+            $muteUnmute.classList.add('muted');
+            $muteUnmute.classList.remove('unmuted');
           } else {
-            $muteUnmute.innerHTML = "be quiet";
+            $muteUnmute.classList.add('unmuted');
+            $muteUnmute.classList.remove('muted');
           }
         });
       });
