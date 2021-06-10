@@ -416,8 +416,10 @@ TEXT / ESSAY
     padding-bottom: 10rem;
     padding-bottom: 10vh;
   }
-  .txt .fig--footnote{          
+  .txt .fig--footnote{       
+    font-family: times, serif;       
     font-size: 0.8em;      
+    line-height: 1.1;
     padding: 1rem 2rem;
     margin: 0;
     position: fixed;
@@ -428,6 +430,9 @@ TEXT / ESSAY
     z-index: 50;
     border-top: 1px solid;
   }
+    .txt .fig--footnote .footnote--num{
+      font-size: .6rem;
+    }
     .txt .fig--footnote p{
       margin-top: 0;
     }
@@ -453,13 +458,12 @@ TEXT / ESSAY
     }
 
   .txt a[href^="#ftnt"]{
-    font-size: .6em;
+    font-size: .6rem;
     color: #000000;
     text-decoration: none;
     vertical-align: super;
   }
-  .txt q,
-  .txt .fig--footnote,
+  .txt q,  
   .txt a{
     font-family: times, serif;
     font-size: 1.06em;
