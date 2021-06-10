@@ -121,19 +121,19 @@ STREAM SECTION
 
 @keyframes slide-down {
   0%{
-    transform: translateY(-100%);
+    transform: translateY(-100%) translateZ(0);
   }
   100%{
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 @keyframes slide-up {
   0%{
-    transform: translateY(100%);
+    transform: translateY(100%) translateZ(0);
   }
   100%{
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 @keyframes fade-in {
@@ -142,6 +142,14 @@ STREAM SECTION
   }
   100%{
     opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
   }
 }
 
@@ -199,13 +207,26 @@ STREAM SECTION
     align-items: stretch;
     height: 100%;
     max-height: 100vh;
-    max-width: 100%;
-    animation: fade-in 1s ease-in-out 2s;    
-    animation-fill-mode: both;
+    max-width: 100%;    
   }
-    .stream .stream--media img{
-      max-width: 100%;
+  .stream--media img{
+    max-width: 100%;
+  }
+    .stream.stream__placeholder .stream--media img{
+      animation: fade-in 1s ease-in-out 2s;    
+      animation-fill-mode: both;     
     }
+    .stream.stream__video .stream--media img{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fade-out 1s ease-in-out 7s;    
+      animation-fill-mode: both;
+    }
+      body.cancel-fade .stream.stream__video .stream--media img{
+        display: none;
+      }
 
     .stream .stream--media .stream--player{
       pointer-events: none;
@@ -228,7 +249,7 @@ STREAM SECTION
   box-sizing: border-box;
   padding: 0.7rem 0.6rem 0.4rem;
   z-index: 99;
-  transform: translateY(100%);
+  transform: translateY(100%) translateZ(0);
   animation: slide-down 1s ease-in-out 7s;
   animation-fill-mode: both;  
 } 

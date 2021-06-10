@@ -139,7 +139,19 @@ const Stream = function({
             {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
           </button>
         </div>
-        <div className="stream--media">         
+        <div className="stream--media">
+          <img 
+            width="1600" 
+            height="1200"
+            alt="Screenshot from ECHO FX containing a twitter avatar of a face in red and black with text that reads @klobo15 Farage told Sky that REMAIN will edge it"
+            className="stream--placeholder"
+            src={placeholderSrc}
+            srcSet={`
+              ${placeholderSrc} 1600w,
+              ${placeholder1000Src} 1000w
+            `}
+            sizes="100vw"
+          />      
           <ReactPlayer
             className="stream--player"
             ref={ player }
