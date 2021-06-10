@@ -57,6 +57,7 @@ header{
   }
   header h1,
   header h2{
+    line-height: 1.1;
     font-weight: normal;
     font-size: 1rem;
     margin-bottom: 0;
@@ -280,6 +281,9 @@ STREAM SECTION
   }
     .stream--controls button svg path{
       fill: #FFFFFF;    
+    }
+    .stream--controls .controls--mute svg{
+      transform: translateX(-0.05rem) translateY(-0.1rem);
     }
     .stream--controls .controls--fullscreen svg{
       height: 0.9rem;
