@@ -70,7 +70,10 @@ const Stream = function({
   }
 
   useEffect( () => {
-    const handleFullscreenChange = () => {
+    if( !screenfull.isEnabled ){
+      return;
+    }    
+    const handleFullscreenChange = () => {      
       if( screenfull.isFullscreen ){
         setIsFullscreen(true)
       } else {
@@ -132,12 +135,16 @@ const Stream = function({
           >
             {(isMuted) ? <SvgUnMute /> : <SvgMute /> }
           </button>
-          <button 
-            className="controls--fullscreen"
-            onClick={ fullscreen }
-          >
-            {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
-          </button>
+          {(screenfull.isEnabled) ? 
+            <button 
+              className="controls--fullscreen"
+              onClick={ fullscreen }
+            >
+              {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
+            </button>
+          :
+            ''
+          }
         </div>
         <div className="stream--media">
           <img 
