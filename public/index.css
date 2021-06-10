@@ -212,7 +212,8 @@ STREAM SECTION
 
 .stream--controls{
   display: flex;
-  justify-content:space-around;    
+  justify-content:space-around;
+  align-items: center;
   position: fixed;  
   top: 0;
   width: 100%; 
@@ -220,20 +221,33 @@ STREAM SECTION
   padding: 0.7rem 0.6rem 0.4rem;
   z-index: 99;
   transform: translateY(100%);
-  animation: slide-down 1s ease-in-out;
+  animation: slide-down 1s ease-in-out 7s;
   animation-fill-mode: both;
 } 
   @media (min-width: 720px){
     .stream--controls{
       padding: 0.4rem 0.6rem 0.7rem;
-      animation: slide-up 1s ease-in-out;
+      animation: slide-up 1s ease-in-out 7s;
       animation-fill-mode: both;
       top: auto;
       bottom: 0;
     }
+  } 
+  .stream--controls .controls--bar{
+    height: .8rem;
+    background: #FF0000;
+    flex-grow: 2;
+    margin: 0 .4rem;
   }
+
+  .stream--controls .controls--live{
+    width: auto;
+    white-space: nowrap;
+    color: #FF0000;
+    margin: -0.1rem .4rem 0;
+  }
+
   .stream--controls button{
-    color: #000000;
     transition: color .75s ease-in;
     background-color: transparent;
     height: 1rem;
@@ -253,134 +267,17 @@ STREAM SECTION
     transform: translateX(-.05rem) translateY(-.05rem);
   }
     .stream--controls button svg path{
-      fill: #000000;    
+      fill: #FFFFFF;    
     }
-    .stream--controls button.controls--live{
-      width: auto;
-      white-space: nowrap;
-      color: #FF0000;
-      margin-top: -0.1rem;
-    }
-    .stream--controls button.controls--live.not-live{
-      color: #000000;
+    .stream--controls .controls--fullscreen svg{
+      height: 0.9rem;
+      width: 0.9rem;
+      transform: translateX(.05rem) translateY(.05rem);
     }
 
 
-  .stream--controls input[type=range] {
-    width: 100%;
-    margin: 0 .4rem;
-    background-color: rgba(0,0,0,0.1);
-    -webkit-appearance: none;
-  }
-  .stream--controls input[type=range]:focus {
-    outline: none;
-  }
-  .stream--controls input[type=range]::-webkit-slider-runnable-track {   
-    background: transparent;
-    border: 0;
-    width: 100%;
-    height: 1rem;
-    cursor: pointer;
-  }
-  .stream--controls input[type=range]::-webkit-slider-thumb {
-    background: #FF0000;
-    margin-top: 0px;
-    width: .3rem;
-    height: 1rem;    
-    border: 0;
-    cursor: pointer;
-    -webkit-appearance: none;
-    border-radius: 0;
-  }
-  .stream--controls input[type=range]:focus::-webkit-slider-runnable-track {
-    background: transparent
-  }
-  .stream--controls input[type=range]::-moz-range-track {
-    background: transparent;
-    border: 0;
-    width: 100%;
-    height: 1rem;
-    cursor: pointer;
-  }
-  .stream--controls input[type=range]::-moz-range-thumb {
-    background: #FF0000;
-    width: .3rem;
-    height: 1rem;    
-    border: 0;
-    cursor: pointer;
-    border-radius: 0;
-  }
-  .stream--controls input[type=range]::-ms-track {
-    background: transparent;
-    border-color: transparent;
-    border-width: 0px 0;
-    color: transparent;
-    width: 100%;
-    height: 1rem;
-    cursor: pointer;
-  }
-  .stream--controls input[type=range]::-ms-fill-lower {
-    background: transparent;
-    border: 0;
-  }
-  .stream--controls input[type=range]::-ms-fill-upper {
-    background: transparent;
-    border: 0;
-  }
-  .stream--controls input[type=range]::-ms-thumb {
-    background: #FF0000;
-    width: .3rem;
-    height: 1rem;    
-    border: 0;
-    cursor: pointer;
-    margin-top: 0px;
-    border-radius: 0;
-    /*Needed to keep the Edge thumb centred*/
-  }
-  .stream--controls input[type=range]:focus::-ms-fill-lower {
-    background: transparent;
-  }
-  .stream--controls input[type=range]:focus::-ms-fill-upper {
-    background: transparent;
-  }
-  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-  how to remove the virtical space around the range input in IE*/
-  @supports (-ms-ime-align:auto) {
-    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-    .stream--controls input[type=range] {
-      margin: 0;
-      /*Edge starts the margin from the thumb, not the track as other browsers do*/
-    }
-  }
  
-body.streaming .stream--controls button svg path{
-  fill: #FFFFFF;
-}
-  body.streaming .stream--controls input[type=range]{
-    background-color: rgba(255,255,255,0.1);
-  }
 
-  body.streaming .stream--controls button.controls--live.not-live{
-    color: #FFFFFF;
-  }
-  /* body.streaming .stream--controls input[type=range]::-webkit-slider-runnable-track {
-    background: #333333;
-  }
-  body.streaming .stream--controls input[type=range]::-moz-range-track {
-    background: #333333;
-  }  
-  body.streaming .stream--controls input[type=range]::-ms-fill-lower {
-    background: #333333;
-  }
-  body.streaming .stream--controls input[type=range]::-ms-fill-upper {
-    background: #333333;
-  }  
-  body.streaming .stream--controls input[type=range]:focus::-ms-fill-lower {
-    background: #333333;
-  }
-  body.streaming .stream--controls input[type=range]:focus::-ms-fill-upper {
-    background: #333333;
-  } */
 
 /***********************************
 ************************************

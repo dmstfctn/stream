@@ -9,7 +9,7 @@ import humanTimeRemaining from './helpers/humanTimeRemaining.js';
 const sortStreams = ( streams, _now ) => {
   const now = _now || (new Date()).getTime();
   return streams.filter((stream) => {
-      return stream.leadInStart > now - Data.config.timing.streamLength;
+      return stream.start > now - Data.config.timing.streamLength;
     }).sort( (a,b) => {
       return (a.start - now) - (b.start - now);
     });
@@ -17,7 +17,6 @@ const sortStreams = ( streams, _now ) => {
 
 function App() {
   const [isStreaming, setIsStreaming] = useState( false );
-  const [isLeadIn, setIsLeadIn] = useState( false );  
   const [now, setNow] = useState();
   const [currentStreamStart, setCurrentStreamStart] = useState( false );
   const [streams, setStreams] = useState( sortStreams( Data.streams, now ) );
@@ -25,23 +24,12 @@ function App() {
  
 
   useEffect(() => {
-    streams.forEach(({start, leadInStart}, i ) =>{ 
-      if(
-        now >= leadInStart
-        && now < start
-      ){        
-        console.log('START LEAD IN');
-        setCurrentStreamStart( leadInStart );
-        setIsStreaming( false );
-        setIsLeadIn( true );
-      }
+    streams.forEach(({start}, i ) =>{ 
       if(
         now >= start
         && now < start + Data.config.timing.streamLength 
       ){        
-        console.log('START STREAM');
-        setCurrentStreamStart( leadInStart );
-        setIsLeadIn( false );
+        setCurrentStreamStart( start );
         setIsStreaming( true );
       }     
     })
@@ -118,7 +106,6 @@ function App() {
     <Stream 
       progress={now - currentStreamStart}
       isStreaming={isStreaming}
-      isLeadIn={isLeadIn}
       placeholderSrc={process.env.PUBLIC_URL + '/media/face1.jpg'}
       placeholder1000Src={process.env.PUBLIC_URL + '/media/face1-1000px.jpg'}
       src={Data.config.src} 

@@ -1,16 +1,11 @@
 const loadTime = new Date();
-const startTime = (new Date(loadTime.getTime() + 40000));
+const startTime = (new Date(loadTime.getTime() - 10000));
 
 const Data = {
   config: {
     src: "https://vimeo.com/559393481",
-    timing: {
-      // streamLength: 1800000, //30min
-      // leadIn: 1800000, //30min
-      //streamLength: 123000, //2:03      
-      //leadIn: 10000, //10sec
+    timing: {      
       streamLength: 1184000, //19:44
-      leadIn: 30000
     }
   },
   streams: [
@@ -33,12 +28,5 @@ const Data = {
     },
   ]
 }
-
-Data.streams = Data.streams.map(( stream ) => {
-  return {
-    ...stream,
-    leadInStart: stream.start - Data.config.timing.leadIn
-  }
-});
 
 export default Data;

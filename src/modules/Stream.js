@@ -5,8 +5,6 @@ import screenfull from 'screenfull'
 
 import { ReactComponent as SvgFullscreen } from '../svg/fullscreen.svg'
 import { ReactComponent as SvgFullscreenReduce } from '../svg/fullscreen-reduce.svg'
-import { ReactComponent as SvgPlay } from '../svg/play.svg'
-import { ReactComponent as SvgPause } from '../svg/pause.svg'
 import { ReactComponent as SvgMute } from '../svg/mute.svg'
 import { ReactComponent as SvgUnMute } from '../svg/unmute.svg'
 
@@ -15,34 +13,14 @@ const Stream = function({
   src, 
   placeholderSrc, 
   placeholder1000Src,
-  isLeadIn, 
   isStreaming 
 }){
   const acceptableLatency = 1500;
   const [isMuted, setIsMuted] = useState(true);
-  const [isLive, setIsLive] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(isLeadIn || isStreaming);
-  const [isSeeking, setIsSeeking] = useState( false );
-  const [isFullscreen, setIsFullscreen] = useState( false );
-  const [amountPlayed, setAmountPlayed] = useState(0);
-  const [videoDuration, setVideoDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(isStreaming);  
+  const [isFullscreen, setIsFullscreen] = useState( false );  
   const player = useRef();
   const streamWrapper = useRef();
-
-  const liveNotLive = () => {
-    if( !isLive ){
-      alignVideo();
-      setIsPlaying( true );
-    }
-    setIsLive( !isLive );
-  }
-
-  const playPause = () => {
-    if( isPlaying ){
-      setIsLive( false );
-    }
-    setIsPlaying( !isPlaying );    
-  }
 
   const muteUnmute = () => {
     setIsMuted( !isMuted );
@@ -62,48 +40,12 @@ const Stream = function({
     }
   }
 
-  const seekMouseDown = () => {
-    setIsSeeking( true );
-    setIsLive( false );
-  }
-
-  const seekMouseUp = ( e ) => {
-    setIsSeeking( false );          
-    executeVideoSeek( parseFloat( e.target.value ) )
-  }
-
-  const seekChange = ( e ) => {
-    const target = parseFloat(e.target.value);
-    setIsLive( false );
-    setAmountPlayed( target );
-  }
-
-  const executeVideoSeek = ( target ) => {
-    if( videoDuration > 0 ){
-      if( target <= progress/videoDuration ){
-        player.current.seekTo( target );
-      } else {
-        player.current.seekTo( progress/videoDuration );
-      }
-    } else {
-      setAmountPlayed( target );
-    }
-  }
-
-  const updateProgress = ( state ) => {      
-    console.log('progressUpdate, state:', state );
-    if( !isSeeking ){      
-      alignVideo();
-      setAmountPlayed( state.played );
-    }
-  }
-  const updateDuration = ( duration ) => {
-    setVideoDuration( duration );
+  const updateProgress = ( state ) => {          
+    alignVideo();
   }
 
   const alignVideo = () => {
     if( !player.current ){ return };
-    if( isSeeking ){ return };
     const vimeoApi = player.current.getInternalPlayer();
     vimeoApi.getCurrentTime().then(function(seconds) {
       const videoTime = seconds * 1000;      
@@ -114,7 +56,7 @@ const Stream = function({
           vimeoApi.setCurrentTime( progress / 1000 );          
         }
       } else if( videoTime - progress < -1 * acceptableLatency ) {          
-        if( isPlaying && isLive ){
+        if( isPlaying ){
           //OPTION:
           // here, we could not jump but just signify that it's no longer live
           console.log('behind the time, set to: ', progress/1000);
@@ -124,44 +66,31 @@ const Stream = function({
     });
   }
 
-  useEffect( () => {
-    console.log('Stream.js, isLeadIn? ', isLeadIn, ' isStreaming?', isStreaming, ' isPlaying?', isPlaying );
-    if( isLeadIn || isPlaying ){
+  useEffect( () => {    
+    if( isStreaming ){
       setIsPlaying( true );
     }
-  }, [isLeadIn, isStreaming, isPlaying] );
+  }, [isStreaming] );
 
-  if( isLeadIn || isStreaming ){
+  if( isStreaming ){
     return (
       <article 
         className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}`}
         ref={ streamWrapper }
       >
         <div className="stream--controls">
-          <button 
-            onClick={ playPause }
-          >
-            { (isPlaying) ? <SvgPause /> : <SvgPlay /> }
-          </button>
-          <button 
-            onClick={ liveNotLive } 
-            className={(isLive) ? 'controls--live is-live' : 'controls--live not-live'}
-          >
+          <div className="controls--live is-live">
             LIVE •
-          </button>         
-          <input
-            type='range' min={0} max={0.999999} step='any'
-            value={amountPlayed}
-            onMouseDown={seekMouseDown}
-            onChange={seekChange}
-            onMouseUp={seekMouseUp}
-          />
+          </div>
+          <div className="controls--bar"></div>
           <button 
+            className="controls--mute"
             onClick={ muteUnmute }
           >
             {(isMuted) ? <SvgUnMute /> : <SvgMute /> }
           </button>
           <button 
+            className="controls--fullscreen"
             onClick={ fullscreen }
           >
             {(isFullscreen) ? <SvgFullscreenReduce /> : <SvgFullscreen />}
@@ -181,7 +110,6 @@ const Stream = function({
             playsinline={true}
             //controls={true}
             onProgress={ updateProgress }
-            onDuration={ updateDuration }
             config={{
               vimeo: {
                 playsinline: true,
