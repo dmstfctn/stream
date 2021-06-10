@@ -178,9 +178,16 @@ const Stream = function({
             volume={1}
             muted={isMuted}
             controls={false}
+            playsinline={true}
             //controls={true}
             onProgress={ updateProgress }
             onDuration={ updateDuration }
+            config={{
+              vimeo: {
+                playsinline: true,
+                //quality: '2k'
+              }
+            }}
           />
         </div>
       </article>
