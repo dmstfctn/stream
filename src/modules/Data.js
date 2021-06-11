@@ -22,8 +22,8 @@ const Data = {
     //   title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
     // }, 
     {   
-      start: 1623412200000,
-      title: 'Fri 11 June, 2021 12:50 BST (13:50 CEST)'
+      start: 1623412500000,
+      title: 'Fri 11 June, 2021 12:55 BST (13:55 CEST)'
     },
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
     {
