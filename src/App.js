@@ -9,7 +9,7 @@ import humanTimeRemaining from './helpers/humanTimeRemaining.js';
 const sortStreams = ( streams, _now ) => {
   const now = _now || (new Date()).getTime();
   return streams.filter((stream) => {
-      return stream.start > now - Data.config.timing.streamLength;
+      return stream.start > now - (Data.config.timing.streamLength + Data.config.timing.endDelay);
     }).sort( (a,b) => {
       return (a.start - now) - (b.start - now);
     });
@@ -17,11 +17,13 @@ const sortStreams = ( streams, _now ) => {
 
 function App() {
   const [isStreaming, setIsStreaming] = useState( false );
+  const [isEnding, setIsEnding] = useState( false );
+  //const [isTheEnd, setIsTheEnd] = useState( false );
   const [now, setNow] = useState();
   const [currentStreamStart, setCurrentStreamStart] = useState( false );
   const [streams, setStreams] = useState( sortStreams( Data.streams, now ) );
 
-  useEffect(() => {
+  useEffect(() => {    
     for( let i = 0; i < streams.length; i++ ){
       const start = streams[i].start;      
       if(
@@ -30,9 +32,17 @@ function App() {
       ){        
         setCurrentStreamStart( start );
         setIsStreaming( true );
+        setIsEnding( false );
+        break;
+      } else if( 
+        now >= start + Data.config.timing.streamLength
+        && now < start + Data.config.timing.streamLength + Data.config.timing.endDelay
+      ) {
+        setIsEnding( true );
         break;
       } else {
         setIsStreaming( false );
+        setIsEnding( false );
       }
     }
   }, [now, streams]); 
@@ -47,7 +57,7 @@ function App() {
       document.body.classList.remove('not-streaming');
       if( 
         now - currentStreamStart > 8000  
-        && now < currentStreamStart + Data.config.timing.streamLength - 1000
+        && now < currentStreamStart + Data.config.timing.streamLength
       ){
         document.body.classList.add('cancel-fade');
       } else {
@@ -58,6 +68,14 @@ function App() {
       document.body.classList.add('not-streaming');
     }
   }, [isStreaming, now, currentStreamStart] );
+
+  useEffect( () => {
+    if( isEnding ){
+      document.body.classList.add('ending');
+    } else {
+      document.body.classList.remove('ending');
+    }
+  }, [isEnding] )
 
   useEffect( () => {
     let timeUpdate;

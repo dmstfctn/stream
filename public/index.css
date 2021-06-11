@@ -224,7 +224,8 @@ STREAM SECTION
       animation: fade-out 1s ease-in-out 7s;    
       animation-fill-mode: both;
     }
-      body.cancel-fade .stream.stream__video .stream--media img{
+      body.cancel-fade .stream.stream__video .stream--media img,
+      body.ending  .stream.stream__video .stream--media img{
         display: none;
       }
 
@@ -237,7 +238,7 @@ STREAM SECTION
     width: 100%;
     max-height: 100vh;
     object-fit: contain;
-  }
+  }   
 
 .stream--controls{
   display: flex;
