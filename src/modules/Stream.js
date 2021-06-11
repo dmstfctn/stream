@@ -161,7 +161,7 @@ const Stream = function({
     if( isTheEnd && isFullscreen ){
       fullscreen();
     }
-  }, [isTheEnd])
+  }, [isTheEnd, isFullscreen])
 
   if( isStreaming ){
     return (
