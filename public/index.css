@@ -298,14 +298,8 @@ STREAM SECTION
     .stream--to-top{
       display: block;
       opacity: 0;
-      transition: opacity .2s ease-in; 
-      width: 1rem;
-      height: 1rem;     
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 0.45rem;
-    }
+      transition: opacity .2s ease-in;      
+    }      
       .stream--to-top svg{
         width: 100%;
         height: 100%;
@@ -316,11 +310,32 @@ STREAM SECTION
       .stream--to-top.show{
         opacity: 1;
       }
+
+      .stream--to-top.largescr{
+        display: none;
+      }
+      .stream--to-top.smallscr{
+        width: 2rem;
+        height: 2rem;     
+        position: fixed;      
+        bottom: 1rem;
+        z-index: 99;
+      }
       @media (min-width: 720px){
-        .stream--to-top{
+        .stream--to-top.largescr{
+          display: block;
+        }
+        .stream--to-top.smallscr{
+          display: none;
+        }
+        .stream--to-top.largescr{
+          width: 1rem;
+          height: 1rem; 
           margin-left: -0.22rem;
           margin-bottom: 0.2rem;
-          position: absolute;          
+          position: absolute;   
+          left: 50%;
+          transform: translateX(-50%);       
           bottom: 100%;
           top: auto;             
         }

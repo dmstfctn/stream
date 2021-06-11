@@ -162,7 +162,9 @@ const Stream = function({
         ref={ streamWrapper }
         onMouseMove={mouseMove}        
       >
-        
+        <a href="#stream-top" className={`stream--to-top smallscr${(isScrolledAway) ? ' show' : ''}`}>
+          <SvgToTop />
+        </a> 
         <div 
           className={`stream--controls${(fullscreenShowControls ? ' fullscreen-show' : '')}`}>
           <div className="controls--live is-live">
@@ -171,7 +173,7 @@ const Stream = function({
               onClick={scrollToPlayer}
             >           
             LIVE • 
-            <span className={`stream--to-top${(isScrolledAway) ? ' show' : ''}`}>
+            <span className={`stream--to-top largescr${(isScrolledAway) ? ' show' : ''}`}>
               <SvgToTop />
             </span>
             </a>
