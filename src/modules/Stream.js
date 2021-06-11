@@ -165,7 +165,7 @@ const Stream = function({
     return (
       <article 
         id="stream-top"
-        className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}${(isFullscreen) ? ' stream__fullscreen' : ''}`}
+        className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}${(isFullscreen) ? ' stream__fullscreen' : ''}${(fullscreenShowControls) ? ' mouse' : ''}`}
         ref={ streamWrapper }
         onMouseMove={mouseMove}        
       >

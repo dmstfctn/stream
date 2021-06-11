@@ -228,6 +228,7 @@ STREAM SECTION
       body.ending  .stream.stream__video .stream--media img{
         display: none;
       }
+      
 
     .stream .stream--media .stream--player{
       pointer-events: none;
@@ -375,6 +376,10 @@ STREAM SECTION
 
   .stream.stream__fullscreen{
     background: #000000;
+    cursor: none;
+  }
+  .stream.stream__fullscreen.mouse{
+    cursor: auto;
   }
   .stream__fullscreen .stream--controls{
     opacity: 0;
