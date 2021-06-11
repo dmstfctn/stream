@@ -1,5 +1,4 @@
-const loadTime = new Date();
-
+//const loadTime = new Date();
 /* start 10 minutes in */
 // const startTime = (new Date(loadTime.getTime() - 600000));
 
@@ -22,8 +21,8 @@ const Data = {
     //   title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
     // }, 
     {   
-      start: 1623412500000,
-      title: 'Fri 11 June, 2021 12:55 BST (13:55 CEST)'
+      start: 1623412620000,
+      title: 'Fri 11 June, 2021 12:57 BST (13:57 CEST)'
     },
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
     {
