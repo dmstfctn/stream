@@ -12,12 +12,17 @@ html{
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   line-height: 1.3;
+  font-size: 16px;
 }
   @media (min-width: 1024px){
     html{
       font-size: 1.45vw;
     }
   }
+
+body{
+  -webkit-text-size-adjust: 100%;
+}
 
 .serif{
   font-family: times, serif;
