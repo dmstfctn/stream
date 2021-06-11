@@ -67,6 +67,17 @@ const Stream = function({
     });
   }
 
+  const calculateVideoSize = () => {
+    const overBreakpoint = window.innerWidth > 720;
+    let w = (overBreakpoint) ? (window.innerHeight/3) * 4 : window.innerWidth;
+    let h = (overBreakpoint) ? window.innerHeight : (window.innerWidth/4) * 3;
+    if( h > window.innerHeight ){
+      h = window.innerHeight;
+      w = (h / 3) * 4;
+    }
+    return {w,h};
+  }
+
   const mouseMove = () => {
     setFullscreenShowControls( true );
   }
@@ -187,8 +198,8 @@ const Stream = function({
             className="stream--player"
             ref={ player }
             url={src}
-            width={(window.innerWidth > 720 ) ? (window.innerHeight/3) * 4 : window.innerWidth }
-            height={(window.innerWidth > 720 ) ? window.innerHeight : (window.innerWidth/4) * 3 }
+            width={ calculateVideoSize().w }
+            height={ calculateVideoSize().h }
             playing={isPlaying}
             volume={1}
             muted={isMuted}
