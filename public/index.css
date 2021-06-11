@@ -564,12 +564,17 @@ TEXT / ESSAY
 
   .txt a[href^="#ftnt"]{
     font-size: .6rem;
-    color: #000000;
+    color: #FF0000;
     text-decoration: none;
     vertical-align: super;
     cursor: pointer;
     position: relative;
   }
+    @media (min-width: 720px){
+      .txt a[href^="#ftnt"]{
+        color: #000000;
+      }
+    }
   .txt a[href^="#ftnt"]:after{
     content: '';
     display: block;
