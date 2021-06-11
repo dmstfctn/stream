@@ -397,6 +397,9 @@ TEXT / ESSAY
     .txt .fig--visual .tweet .twitter-tweet{
       transform: scale(0.82);
     }
+    .txt .fig--visual .tweet .twitter-tweet iframe{
+      max-width: 100% !important;
+    }
   .txt .fig--visual img,
   .txt .fig--visual video{
     display: block;
