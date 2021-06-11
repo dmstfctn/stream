@@ -78,6 +78,17 @@ const Stream = function({
     return {w,h};
   }
 
+  const scrollToPlayer = ( e ) => {
+    e.preventDefault();
+    const $wrapper = findDOMNode(streamWrapper.current);        
+    if( window.innerWidth > 720){
+      window.scrollTo( 0, $wrapper.offsetTop );      
+    } else {
+      window.scrollTo( 0, $wrapper.parentElement.parentElement.offsetTop );
+    }
+
+  }
+
   const mouseMove = () => {
     setFullscreenShowControls( true );
   }
@@ -126,7 +137,7 @@ const Stream = function({
   useEffect(() => {
     const handleWindowScroll = (e) => {
       const $wrapper = findDOMNode(streamWrapper.current);
-      const wrapperBox = $wrapper.getBoundingClientRect();      
+      const wrapperBox = $wrapper.getBoundingClientRect();
       if( wrapperBox.top < -1 * wrapperBox.height ){
         setIsScrolledAway( true );
       } else {
@@ -155,7 +166,10 @@ const Stream = function({
         <div 
           className={`stream--controls${(fullscreenShowControls ? ' fullscreen-show' : '')}`}>
           <div className="controls--live is-live">
-            <a href="#stream-top">           
+            <a 
+              href="#stream-top"
+              onClick={scrollToPlayer}
+            >           
             LIVE • 
             <span className={`stream--to-top${(isScrolledAway) ? ' show' : ''}`}>
               <SvgToTop />
