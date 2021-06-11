@@ -126,7 +126,7 @@ const Stream = function({
         <div 
           className={`stream--controls${(fullscreenShowControls ? ' fullscreen-show' : '')}`}>
           <div className="controls--live is-live">
-            LIVE
+            LIVE •
           </div>
           <div className="controls--bar"></div>
           <button 

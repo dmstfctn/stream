@@ -278,7 +278,9 @@ STREAM SECTION
   } 
   .stream--controls .controls--bar{
     height: .2rem;
-    background: #FF0000;
+    /* background: #FF0000; */
+    background: transparent;
+    pointer-events: none;
     flex-grow: 2;
     margin: 0 .4rem;
   }
