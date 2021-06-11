@@ -14,7 +14,8 @@ const Stream = function({
   src, 
   placeholderSrc, 
   placeholder1000Src,
-  isStreaming 
+  isStreaming,
+  isTheEnd
 }){
   const acceptableLatency = 1500;
   const [isMuted, setIsMuted] = useState(true);
@@ -32,7 +33,7 @@ const Stream = function({
 
   const fullscreen = () => {
     if( screenfull.isFullscreen ){
-      screenfull.exit();               
+      screenfull.exit();
     } else {
       screenfull.request(
         findDOMNode(streamWrapper.current),
@@ -153,6 +154,12 @@ const Stream = function({
       setIsPlaying( true );
     }
   }, [isStreaming] );
+
+  useEffect( () => {
+    if( isTheEnd && isFullscreen ){
+      fullscreen();
+    }
+  }, [isTheEnd])
 
   if( isStreaming ){
     return (

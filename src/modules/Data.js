@@ -1,9 +1,9 @@
-//const loadTime = new Date();
+const loadTime = new Date();
 /* start 10 minutes in */
 // const startTime = (new Date(loadTime.getTime() - 600000));
 
 /* start 10 sec from the end */
-//const startTime = (new Date((loadTime.getTime() - (1184000-10000))));
+const startTime = (new Date((loadTime.getTime() - (1184000-10000))));
 
 /* start in 5 seconds */
 //const startTime = (new Date(loadTime.getTime() + 5000 ));
@@ -17,14 +17,14 @@ const Data = {
     }
   },
   streams: [
-    // {
-    //   start: startTime.getTime(),
-    //   title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
-    // }, 
-    {   
-      start: 1623419220000,
-      title: 'Fri 11 June, 2021 14:47 BST (14:47 CEST)'
-    },
+    {
+      start: startTime.getTime(),
+      title: `Today, at: ${startTime.getHours()}:${startTime.getMinutes()}:${startTime.getSeconds()}`
+    }, 
+    // {   
+    //   start: 1623419220000,
+    //   title: 'Fri 11 June, 2021 14:47 BST (14:47 CEST)'
+    // },
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
     {
       start: 1624473000000, 

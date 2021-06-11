@@ -18,7 +18,7 @@ const sortStreams = ( streams, _now ) => {
 function App() {
   const [isStreaming, setIsStreaming] = useState( false );
   const [isEnding, setIsEnding] = useState( false );
-  //const [isTheEnd, setIsTheEnd] = useState( false );
+  const [isTheEnd, setIsTheEnd] = useState( false );
   const [now, setNow] = useState();
   const [currentStreamStart, setCurrentStreamStart] = useState( false );
   const [streams, setStreams] = useState( sortStreams( Data.streams, now ) );
@@ -33,14 +33,23 @@ function App() {
         setCurrentStreamStart( start );
         setIsStreaming( true );
         setIsEnding( false );
+        setIsTheEnd( false );
         break;
       } else if( 
         now >= start + Data.config.timing.streamLength
         && now < start + Data.config.timing.streamLength + Data.config.timing.endDelay
       ) {
+        setIsTheEnd( false );
         setIsEnding( true );
         break;
-      } else {
+      }  else if( 
+        now >= start + Data.config.timing.streamLength + Data.config.timing.endDelay
+        && now <= start + Data.config.timing.streamLength + Data.config.timing.endDelay + 1000
+      ) {
+        setIsEnding( false );
+        setIsTheEnd( true );
+        break;
+      } else {        
         setIsStreaming( false );
         setIsEnding( false );
       }
@@ -76,6 +85,14 @@ function App() {
       document.body.classList.remove('ending');
     }
   }, [isEnding] )
+
+  useEffect( () => {
+    if( isTheEnd ){
+      document.body.classList.add('at-end');
+    } else {
+      document.body.classList.remove('at-end');
+    }
+  }, [isTheEnd] )
 
   useEffect( () => {
     let timeUpdate;
@@ -137,6 +154,7 @@ function App() {
       placeholderSrc={process.env.PUBLIC_URL + '/media/face1.jpg'}
       placeholder1000Src={process.env.PUBLIC_URL + '/media/face1-1000px.jpg'}
       src={Data.config.src} 
+      isTheEnd={isTheEnd}
     />       
     </div>
   );
