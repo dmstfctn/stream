@@ -23,11 +23,13 @@ const Stream = function({
   const [isFullscreen, setIsFullscreen] = useState( false );  
   const [fullscreenShowControls, setFullscreenShowControls] = useState(true);
   const [isScrolledAway, setIsScrolledAway] = useState(false);
+  const [muteHasBeenUsed, setMuteHasBeenUsed] = useState(false);
   const fullscreenHideControlsTimeout = useRef();
   const player = useRef();
   const streamWrapper = useRef();
 
   const muteUnmute = () => {
+    setMuteHasBeenUsed( true );
     setIsMuted( !isMuted );
   }
 
@@ -188,7 +190,7 @@ const Stream = function({
           
           <div className="controls--bar"></div>
           <button 
-            className="controls--mute"
+            className={`controls--mute${(muteHasBeenUsed) ? ' used' : ' unused'}`}
             onClick={ muteUnmute }
           >
             {(isMuted) ? <SvgUnMute /> : <SvgMute /> }

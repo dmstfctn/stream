@@ -3,10 +3,10 @@ const loadTime = new Date();
 // const startTime = (new Date(loadTime.getTime() - 600000));
 
 /* start 10 sec from the end */
-const startTime = (new Date((loadTime.getTime() - (1184000-10000))));
+//const startTime = (new Date((loadTime.getTime() - (1184000-10000))));
 
 /* start in 5 seconds */
-//const startTime = (new Date(loadTime.getTime() + 5000 ));
+const startTime = (new Date(loadTime.getTime() + 5000 ));
 
 const Data = {
   config: {
