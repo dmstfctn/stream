@@ -21,18 +21,20 @@ function App() {
   const [currentStreamStart, setCurrentStreamStart] = useState( false );
   const [streams, setStreams] = useState( sortStreams( Data.streams, now ) );
 
- 
-
   useEffect(() => {
-    streams.forEach(({start}, i ) =>{ 
+    for( let i = 0; i < streams.length; i++ ){
+      const start = streams[i].start;      
       if(
         now >= start
         && now < start + Data.config.timing.streamLength 
       ){        
         setCurrentStreamStart( start );
         setIsStreaming( true );
-      }     
-    })
+        break;
+      } else {
+        setIsStreaming( false );
+      }
+    }
   }, [now, streams]); 
 
   useEffect( () => {
@@ -43,8 +45,13 @@ function App() {
     if( isStreaming ){
       document.body.classList.add('streaming');
       document.body.classList.remove('not-streaming');
-      if( now - currentStreamStart > 8000 ){
+      if( 
+        now - currentStreamStart > 8000  
+        && now < currentStreamStart + Data.config.timing.streamLength - 1000
+      ){
         document.body.classList.add('cancel-fade');
+      } else {
+        document.body.classList.remove('cancel-fade');
       }
     } else {
       document.body.classList.remove('streaming');
