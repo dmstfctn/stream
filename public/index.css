@@ -372,7 +372,9 @@ STREAM SECTION
       transform: translateX(.05rem) translateY(.05rem);
     }
 
-
+  .stream.stream__fullscreen{
+    background: #000000;
+  }
   .stream__fullscreen .stream--controls{
     opacity: 0;
   }
