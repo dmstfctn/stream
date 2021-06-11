@@ -7,6 +7,7 @@ import { ReactComponent as SvgFullscreen } from '../svg/fullscreen.svg'
 import { ReactComponent as SvgFullscreenReduce } from '../svg/fullscreen-reduce.svg'
 import { ReactComponent as SvgMute } from '../svg/mute.svg'
 import { ReactComponent as SvgUnMute } from '../svg/unmute.svg'
+import { ReactComponent as SvgToTop } from '../svg/to-top.svg'
 
 const Stream = function({ 
   progress, 
@@ -20,6 +21,7 @@ const Stream = function({
   const [isPlaying, setIsPlaying] = useState(isStreaming);  
   const [isFullscreen, setIsFullscreen] = useState( false );  
   const [fullscreenShowControls, setFullscreenShowControls] = useState(true);
+  const [isScrolledAway, setIsScrolledAway] = useState(false);
   const fullscreenHideControlsTimeout = useRef();
   const player = useRef();
   const streamWrapper = useRef();
@@ -110,6 +112,20 @@ const Stream = function({
     return () => window.removeEventListener('mousemove', handleFullscreenMouseMove);
   }, [isFullscreen]);
 
+  useEffect(() => {
+    const handleWindowScroll = (e) => {
+      const $wrapper = findDOMNode(streamWrapper.current);
+      const wrapperBox = $wrapper.getBoundingClientRect();      
+      if( wrapperBox.top < -1 * wrapperBox.height ){
+        setIsScrolledAway( true );
+      } else {
+        setIsScrolledAway( false );
+      }
+    }    
+    window.addEventListener('scroll', handleWindowScroll);    
+    return () => window.removeEventListener('scroll', handleWindowScroll);
+  });
+
   useEffect( () => {    
     if( isStreaming ){
       setIsPlaying( true );
@@ -119,15 +135,23 @@ const Stream = function({
   if( isStreaming ){
     return (
       <article 
+        id="stream-top"
         className={`stream stream__video${(isStreaming) ? ' stream__live' : ''}${(isFullscreen) ? ' stream__fullscreen' : ''}`}
         ref={ streamWrapper }
         onMouseMove={mouseMove}        
       >
+        
         <div 
           className={`stream--controls${(fullscreenShowControls ? ' fullscreen-show' : '')}`}>
           <div className="controls--live is-live">
-            LIVE •
+            <a href="#stream-top">           
+            LIVE • 
+            <span className={`stream--to-top${(isScrolledAway) ? ' show' : ''}`}>
+              <SvgToTop />
+            </span>
+            </a>
           </div>
+          
           <div className="controls--bar"></div>
           <button 
             className="controls--mute"
