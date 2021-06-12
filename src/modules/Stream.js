@@ -24,6 +24,7 @@ const Stream = function({
   const [fullscreenShowControls, setFullscreenShowControls] = useState(true);
   const [isScrolledAway, setIsScrolledAway] = useState(false);
   const [muteHasBeenUsed, setMuteHasBeenUsed] = useState(false);
+  const [muteButtonHighlight, setMuteButtonHighlight] = useState(false);
   const fullscreenHideControlsTimeout = useRef();
   const player = useRef();
   const streamWrapper = useRef();
@@ -163,6 +164,13 @@ const Stream = function({
     }
   }, [isTheEnd, isFullscreen])
 
+  useEffect( () => {
+    if( !muteHasBeenUsed ){
+      const seconds = Math.floor(progress/1000);
+      setMuteButtonHighlight( seconds % 2 === 0 );
+    }
+  }, [progress, muteHasBeenUsed]);
+
   if( isStreaming ){
     return (
       <article 
@@ -190,7 +198,7 @@ const Stream = function({
           
           <div className="controls--bar"></div>
           <button 
-            className={`controls--mute${(muteHasBeenUsed) ? ' used' : ' unused'}`}
+            className={`controls--mute${(muteButtonHighlight) ? ' highlight' : ''}`}
             onClick={ muteUnmute }
           >
             {(isMuted) ? <SvgUnMute /> : <SvgMute /> }

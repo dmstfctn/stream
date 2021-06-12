@@ -158,16 +158,19 @@ STREAM SECTION
   }
 }
 
-@keyframes fade-in-out-slightly {
+@keyframes flash {
   0%{
     opacity: 1;
   }
   50%{
-    opacity: 0.5;
-  }
-  100%{
     opacity: 1;
   }
+  51%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }  
 }
 
 #stream-root,
@@ -386,14 +389,11 @@ STREAM SECTION
       overflow: visible;
       transform: translateX(-0.05rem) translateY(-0.1rem);
     }
-      .stream--controls .controls--mute svg .blurrable{
-        fill: #FF0000;
+      .stream--controls .controls--mute svg circle{
+        fill: #FF0000;              
         display: none;
-        filter: blur(50px);
-        transform: scale(1.35) translateX(-13%) translateY(-12%);
-        animation: fade-in-out-slightly 3s ease-in-out infinite;
       }
-      .stream--controls .controls--mute.unused svg .blurrable{
+      .stream--controls .controls--mute.highlight svg circle{
         display: block;
       }
 
