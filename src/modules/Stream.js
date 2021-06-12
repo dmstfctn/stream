@@ -165,11 +165,20 @@ const Stream = function({
   }, [isTheEnd, isFullscreen])
 
   useEffect( () => {
-    if( !muteHasBeenUsed ){
-      const seconds = Math.floor(progress/1000);
-      setMuteButtonHighlight( seconds % 2 === 0 );
+    let muteFlashTimer = false;
+    if( !muteHasBeenUsed && isStreaming ){
+      if( !muteFlashTimer ){
+        muteFlashTimer = setInterval( () => {
+          setMuteButtonHighlight( !muteButtonHighlight );
+        }, 1000 );
+      }      
+    } else {
+      clearInterval( muteFlashTimer );
     }
-  }, [progress, muteHasBeenUsed]);
+    return () => {
+      clearInterval( muteFlashTimer );
+    }
+  }, [isStreaming, muteHasBeenUsed, muteButtonHighlight]);
 
   if( isStreaming ){
     return (
