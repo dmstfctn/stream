@@ -31,7 +31,7 @@ const Data = {
       title: 'Wed 23 June, 2021 19:30 BST (20:30 CEST)'
     },
     {      
-      start: 1625086800000, //times in ms
+      start: 1625077800000, //times in ms
       title: 'Wed 30 June, 2021 19:30 BST (20:30 CEST)'
     },
   ]
