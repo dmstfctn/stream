@@ -28,12 +28,12 @@ const Data = {
     // },
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
     {
-      start: 1624473000000, 
-      title: 'Wed 23 June, 2021 19:30 BST (20:30 CEST)'
+      start: 1624471200000, 
+      title: 'Wed 23 June, 2021 19:00 BST (20:00 CEST)'
     },
     {      
-      start: 1625077800000, //times in ms
-      title: 'Wed 30 June, 2021 19:30 BST (20:30 CEST)'
+      start: 1625076000000, //times in ms
+      title: 'Wed 30 June, 2021 19:00 BST (20:00 CEST)'
     },
   ]
 }
