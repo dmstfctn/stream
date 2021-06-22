@@ -201,11 +201,11 @@
           One of the key moments in ECHO FX focuses on the initial impact of Farage's conceding statement, a well-timed piece of disinformation which echoed through Twitter on Referendum night, acting as a counterpoint to what, with hindsight, was a predictable result. Farage’s concession spread with memetic speed, reduced to its most transmissible form: <q>Remain will edge it</q>.
         </p>
         <figure class="fig--visual">
-          <div class="tweet">
-            <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">BREAK: <a  target="_blank" href="https://twitter.com/Nigel_Farage?ref_src=twsrc%5Etfw">@Nigel_Farage</a> tells me: it&#39;s been an extraordinary referendum, exceptionally high turn and looks REMAIN will edge it. <a  target="_blank" href="https://twitter.com/hashtag/EUref?src=hash&amp;ref_src=twsrc%5Etfw">#EUref</a></p>&mdash; Darren McCaffrey (@DarrenGBNews) <a  target="_blank" href="https://twitter.com/DarrenGBNews/status/746085435915501568?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div class="tweet tweet1">
+            <!-- TWEET 1 -->
           </div>
-          <div class="tweet">
-            <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">NIGEL FARAGE: &#39;Remain will edge it&#39; <a  target="_blank" href="https://t.co/sQOwqF3AWW">https://t.co/sQOwqF3AWW</a></p>&mdash; Samantha Hurrell (@snapharmony) <a  target="_blank" href="https://twitter.com/snapharmony/status/746107939501518848?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+          <div class="tweet tweet2">
+            <!-- TWEET 2 -->
           </div>
         </figure>
         <p>
@@ -253,7 +253,28 @@
       </figure>
     </article>
 
-    <script>
+    <script type="text/javascript">
+
+      var tweet1 = '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">BREAK: <a  target="_blank" href="https://twitter.com/Nigel_Farage?ref_src=twsrc%5Etfw">@Nigel_Farage</a> tells me: it&#39;s been an extraordinary referendum, exceptionally high turn and looks REMAIN will edge it. <a  target="_blank" href="https://twitter.com/hashtag/EUref?src=hash&amp;ref_src=twsrc%5Etfw">#EUref</a></p>&mdash; Darren McCaffrey (@DarrenGBNews) <a  target="_blank" href="https://twitter.com/DarrenGBNews/status/746085435915501568?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote>';
+      var tweet2 = '<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">NIGEL FARAGE: &#39;Remain will edge it&#39; <a  target="_blank" href="https://t.co/sQOwqF3AWW">https://t.co/sQOwqF3AWW</a></p>&mdash; Samantha Hurrell (@snapharmony) <a  target="_blank" href="https://twitter.com/snapharmony/status/746107939501518848?ref_src=twsrc%5Etfw">June 23, 2016</a></blockquote>';
+      var twitterScript = 'https://platform.twitter.com/widgets.js'
+      var $tweet1 = document.querySelector('.tweet1');
+      var $tweet2 = document.querySelector('.tweet2');      
+      setTimeout( function(){ 
+        try{
+          $tweet1.innerHTML = tweet1;
+          $tweet2.innerHTML = tweet2;
+          var script = document.createElement('script');
+          script.async = true;
+          script.charset = 'utf-8';
+          script.src = twitterScript;
+          document.body.appendChild( script );
+        } catch (err){
+          console.log( 'Error embedding tweets:' );
+          console.log( err );
+        }
+      }, 1000 );
+
       /* footnote functionality */      
       var $footnoteLinks = document.querySelectorAll('a[href^="#ftnt"]');
       var $footnotes = document.querySelectorAll('.fig--footnote');
