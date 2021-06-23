@@ -2,6 +2,9 @@
 /* start 10 minutes in */
 // const startTime = (new Date(loadTime.getTime() - 600000));
 
+/* start 19 minutes in */
+//const startTime = (new Date(loadTime.getTime() - (60000*19)));
+
 /* start 10 sec from the end */
 //const startTime = (new Date((loadTime.getTime() - (1184000-10000))));
 
@@ -13,7 +16,7 @@ const Data = {
     //src: "https://vimeo.com/559393481",
     src: "https://vimeo.com/559393481/e71551b38f",
     timing: {      
-      streamLength: 1159000, //19:19
+      streamLength: 1159000 * 3, //19:19 * 3
       endDelay: 10000
     }
   },

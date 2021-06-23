@@ -247,6 +247,7 @@ const Stream = function({
             muted={isMuted}
             controls={false}
             playsinline={true}
+            loop={true}
             //controls={true}
             onProgress={ updateProgress }
             config={{
