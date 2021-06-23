@@ -382,14 +382,15 @@
           }
         });
       });
-
-      if (window.fetch) {
-        try {
-          var id = Date.now() + '-' + Math.floor(Math.random() * 10000);
-          var url = 'https://oliversmith.cc/dev/stream-dc-log/index.php?id=' + id + '';
-          fetch( url );
-        } catch (err) {
-          console.log( err );
+      if( window.location.hostname === 'stream.demystification.co' ){
+        if (window.fetch) {
+          try {
+            var id = Date.now() + '-' + Math.floor(Math.random() * 10000);
+            var url = 'https://oliversmith.cc/dev/stream-dc-log/index.php?id=' + id + '';
+            fetch( url );
+          } catch (err) {
+            console.log( err );
+          }
         }
       }
     </script>
