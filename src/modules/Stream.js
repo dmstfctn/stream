@@ -52,6 +52,7 @@ const Stream = function({
   const alignVideo = () => {
     if( !player.current ){ return };
     const vimeoApi = player.current.getInternalPlayer();
+    // console.log('alignVideo() : ', 'progress=', progress)
     vimeoApi.getCurrentTime().then(function(seconds) {
       const videoTime = seconds * 1000;      
       if( videoTime - progress > acceptableLatency ){

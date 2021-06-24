@@ -17,6 +17,7 @@ const Data = {
     src: "https://vimeo.com/559393481/e71551b38f",
     timing: {      
       streamLength: 1159000 * 3, //19:19 * 3
+      loopLength: 1159000,
       endDelay: 10000
     }
   },
@@ -30,10 +31,18 @@ const Data = {
     //   title: 'Fri 11 June, 2021 14:47 BST (14:47 CEST)'
     // },
     // to get the time: (new Date('2021-06-23T18:30:00.000Z')).getTime(),
-    {
-      start: 1624443300000, 
-      title: 'Wed 23 June, 2021 11:15 BST (12:15 CEST)'
-    },
+    // {
+    //   start: 1624443300000, 
+    //   title: 'Wed 23 June, 2021 11:15 BST (12:15 CEST)'
+    // },
+    // {
+    //   start: 1624531200000, 
+    //   title: 'Thurs 24 June, 2021 11:40 BST (12:40 CEST)'
+    // },
+    // {
+    //   start: 1624537800000, 
+    //   title: 'Thurs 24 June, 2021 13:30 BST (14:30 CEST)'
+    // },
     {
       start: 1624471200000, 
       title: 'Wed 23 June, 2021 19:00 BST (20:00 CEST)'

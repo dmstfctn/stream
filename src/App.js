@@ -57,6 +57,7 @@ function App() {
   }, [now, streams]); 
 
   useEffect( () => {
+    //console.log('TIMING: total:', now - currentStreamStart, 'modulo:', (now - currentStreamStart) % Data.config.timing.loopLength ); 
     setStreams( sortStreams( Data.streams, now ) );
   }, [now] );
   
@@ -149,7 +150,7 @@ function App() {
       </div>
     </nav>
     <Stream 
-      progress={now - currentStreamStart}
+      progress={ (now - currentStreamStart) % Data.config.timing.loopLength }
       isStreaming={isStreaming}
       placeholderSrc={process.env.PUBLIC_URL + '/media/face1.jpg'}
       placeholder1000Src={process.env.PUBLIC_URL + '/media/face1-1000px.jpg'}
