@@ -141,7 +141,7 @@ function App() {
                 </time> 
                 <wbr></wbr>
                 <span className="remaining serif italic red"> 
-                  ({ (remaining) ? remaining : 'now' })
+                  ({ (remaining) ? remaining : 'streaming now' })
                 </span>
               </li>
             )
