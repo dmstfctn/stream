@@ -130,7 +130,7 @@ function App() {
     </aside> */}
     <nav className="upcoming-streams">
       <div>
-        Upcoming Streams:
+        {(streams.length > 0) ? 'Upcoming Streams:' : ' No Upcoming Streams'}
         <ol>
           {streams.map( ( stream, i ) => { 
             const remaining = humanTimeRemaining( stream.start - now );               
